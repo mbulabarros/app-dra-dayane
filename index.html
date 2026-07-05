@@ -31,7 +31,8 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 .splash-loader{width:48px;height:4px;background:rgba(255,255,255,.18);border-radius:2px;margin-top:30px;overflow:hidden;position:relative}.splash-loader::after{content:'';display:block;width:60%;height:100%;background:linear-gradient(90deg,var(--amarelo),var(--rosa));border-radius:2px;animation:sl 1s ease-in-out infinite}
 @keyframes sf{to{opacity:1}}@keyframes sl{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}}
 
-.app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;background:var(--bege);padding-bottom:90px;box-shadow:0 0 80px rgba(0,0,0,.2)}
+.app{width:100%;max-width:100%;margin:0 auto;min-height:100vh;position:relative;background:var(--bege);padding-bottom:90px}
+@media(min-width:640px){.app{padding-left:calc(50vw - 320px);padding-right:calc(50vw - 320px)}}
 .screen{position:relative;z-index:1;padding:20px 18px;display:none}.screen.active{display:block;animation:si .45s cubic-bezier(.22,1,.36,1) forwards}@keyframes si{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* HERO */
@@ -117,10 +118,10 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 .loading-msg{text-align:center;padding:40px 16px;color:var(--text-soft);font-size:.85rem}
 
 /* NAV */
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:100;background:var(--white);padding:8px 0 calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;box-shadow:0 -4px 24px rgba(0,0,0,.08);border-top-left-radius:var(--r-lg);border-top-right-radius:var(--r-lg)}
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;z-index:100;background:var(--white);padding:8px 0 calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;box-shadow:0 -4px 24px rgba(0,0,0,.08)}
 .nav-item{text-align:center;color:#c9c2b8;text-decoration:none;font-size:.6rem;font-weight:700;flex:1;transition:color .2s;cursor:pointer;padding:4px 0}.nav-item.active{color:var(--laranja-d)}
 .nav-item .material-icons-round{display:block;font-size:22px;margin-bottom:1px}
-@media(min-width:481px){.app{border-left:1px solid #eee;border-right:1px solid #eee}}
+@media(min-width:640px){.bottom-nav{padding-left:calc(50vw - 320px);padding-right:calc(50vw - 320px)}}
 </style>
 </head>
 <body>
