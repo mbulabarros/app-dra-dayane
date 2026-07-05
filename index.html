@@ -168,6 +168,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .sinal-chip{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;margin:4px 4px 4px 0;border-radius:20px;border:1.5px solid #e0dcd4;background:var(--white);font-family:inherit;font-size:.78rem;font-weight:700;color:var(--text-soft);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
 .sinal-chip.selecionado.urgente{background:var(--rosa);border-color:var(--rosa);color:#fff}
 .sinal-chip.selecionado.atencao{background:var(--amarelo);border-color:var(--amarelo);color:#7a5300}
+.duracao-chip.selecionado{background:var(--verde);border-color:var(--verde);color:#fff}
 .alerta-urgente{background:linear-gradient(135deg,var(--rosa),#a82a72);color:#fff;border-radius:var(--r-md);padding:16px;margin-bottom:16px;box-shadow:var(--shadow-md)}
 .alerta-urgente p{font-size:.86rem;line-height:1.5;font-weight:700;margin-bottom:10px}
 .alerta-urgente .btn{background:#fff;color:var(--rosa)}
@@ -393,6 +394,9 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 
     <div class="section-group-title">Outros sinais</div>
     <div class="sinais-wrap" id="sinaisAtencaoWrap"></div>
+
+    <div class="section-group-title">Há quanto tempo? <span class="hint">(opcional, mas ajuda muito)</span></div>
+    <div class="sinais-wrap" id="duracaoWrap"></div>
 
     <div class="form-card" style="margin-top:16px">
       <div class="field">
@@ -949,13 +953,43 @@ const SINAIS_ALARME = [
 ];
 let SINAIS_SELECIONADOS = new Set();
 
+// Duração dos sinais — seleção única e opcional. Ajuda a IA a diferenciar
+// um quadro agudo de um quadro arrastado (mesma queixa, leitura clínica
+// diferente conforme o tempo de evolução). Enviamos o texto (label), não
+// o id, porque é isso que entra direto no prompt do Gemini.
+const DURACOES = [
+  { id:'hoje',      label:'Começou hoje' },
+  { id:'2-3dias',   label:'Há 2-3 dias' },
+  { id:'1semana',   label:'Há cerca de uma semana' },
+  { id:'mais1sem',  label:'Há mais de uma semana' },
+];
+let DURACAO_SELECIONADA = null; // id, ou null se não informado
+
 function chipSinalHtml(s){
   return `<button type="button" class="sinal-chip" data-id="${s.id}" data-grupo="${s.grupo}" onclick="toggleSinal('${s.id}')">${s.label}</button>`;
+}
+
+function chipDuracaoHtml(d){
+  return `<button type="button" class="sinal-chip duracao-chip" data-id="${d.id}" onclick="selecionarDuracao('${d.id}')">${d.label}</button>`;
 }
 
 function renderSinaisChips(){
   document.getElementById('sinaisUrgenteWrap').innerHTML = SINAIS_ALARME.filter(s => s.grupo === 'urgente').map(chipSinalHtml).join('');
   document.getElementById('sinaisAtencaoWrap').innerHTML = SINAIS_ALARME.filter(s => s.grupo === 'atencao').map(chipSinalHtml).join('');
+  document.getElementById('duracaoWrap').innerHTML = DURACOES.map(chipDuracaoHtml).join('');
+}
+
+// Seleção única (tipo "radio"): clicar de novo no mesmo item desmarca —
+// mantém a duração como opcional, sem forçar a família a escolher.
+function selecionarDuracao(id){
+  DURACAO_SELECIONADA = (DURACAO_SELECIONADA === id) ? null : id;
+  atualizarDuracaoUI();
+}
+
+function atualizarDuracaoUI(){
+  document.querySelectorAll('.duracao-chip').forEach(btn => {
+    btn.classList.toggle('selecionado', btn.dataset.id === DURACAO_SELECIONADA);
+  });
 }
 
 function toggleSinal(id){
@@ -984,8 +1018,10 @@ function resetQueixaForm(){
   const btn = document.getElementById('btnEnviarQueixa');
   if (btn) { btn.disabled = false; btn.innerHTML = '<span class="material-icons-round">send</span> Enviar para a Dra. Dayane'; }
   SINAIS_SELECIONADOS = new Set();
+  DURACAO_SELECIONADA = null;
   renderSinaisChips();
   atualizarSinaisUI();
+  atualizarDuracaoUI();
 }
 
 async function enviarQueixa(){
@@ -998,11 +1034,15 @@ async function enviarQueixa(){
     .filter(s => SINAIS_SELECIONADOS.has(s.id))
     .map(s => ({ label: s.label, grupo: s.grupo }));
 
+  const duracao = DURACAO_SELECIONADA
+    ? (DURACOES.find(d => d.id === DURACAO_SELECIONADA) || {}).label || ''
+    : '';
+
   const btn = document.getElementById('btnEnviarQueixa');
   btn.disabled = true;
   btn.textContent = 'Enviando…';
 
-  const data = await enviarComFila({ tipo: 'queixa_nova', bebeId: PERFIL.bebe.id, sinaisMarcados, observacaoLivre });
+  const data = await enviarComFila({ tipo: 'queixa_nova', bebeId: PERFIL.bebe.id, sinaisMarcados, observacaoLivre, duracao });
 
   const msg = data.offline
     ? 'Sem conexão agora — vamos enviar automaticamente assim que seu aparelho reconectar. Se for algo urgente, não espere: procure atendimento ou fale pelo WhatsApp agora.'
