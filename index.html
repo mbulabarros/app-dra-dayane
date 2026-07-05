@@ -162,6 +162,15 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .guest-banner button{flex-shrink:0;background:#fff;color:var(--laranja-d);border:none;border-radius:20px;padding:9px 14px;font-family:inherit;font-weight:800;font-size:.74rem;cursor:pointer;white-space:nowrap}
 .maps-link{color:var(--verde-d);font-size:.76rem;font-weight:800;text-decoration:underline;display:inline-flex;align-items:center;gap:4px;margin-top:6px}
 .maps-link .material-icons-round{font-size:15px}
+
+/* PRAXIS — checklist de sinais (queixa) */
+.sinais-wrap{display:flex;flex-wrap:wrap;margin-bottom:6px}
+.sinal-chip{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;margin:4px 4px 4px 0;border-radius:20px;border:1.5px solid #e0dcd4;background:var(--white);font-family:inherit;font-size:.78rem;font-weight:700;color:var(--text-soft);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.sinal-chip.selecionado.urgente{background:var(--rosa);border-color:var(--rosa);color:#fff}
+.sinal-chip.selecionado.atencao{background:var(--amarelo);border-color:var(--amarelo);color:#7a5300}
+.alerta-urgente{background:linear-gradient(135deg,var(--rosa),#a82a72);color:#fff;border-radius:var(--r-md);padding:16px;margin-bottom:16px;box-shadow:var(--shadow-md)}
+.alerta-urgente p{font-size:.86rem;line-height:1.5;font-weight:700;margin-bottom:10px}
+.alerta-urgente .btn{background:#fff;color:var(--rosa)}
 </style>
 </head>
 <body>
@@ -372,15 +381,23 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <div id="queixaConfirmacao" style="display:none"></div>
 
   <div id="queixaFormWrap">
-    <p class="section-subtitle">Descreva o que você notou. A Dra. Dayane vai revisar.</p>
-    <div class="privacy-box" style="background:rgba(222,63,143,.08);border-color:rgba(222,63,143,.25)">
-      <span class="material-icons-round" style="color:var(--rosa)">warning</span>
-      <span><b>Isso não é um canal de urgência.</b> Se seu bebê está com dificuldade para respirar, lábios ou rosto arroxeados, muito sonolento/difícil de acordar, ou teve uma convulsão — procure atendimento agora, não espere a resposta pelo app.</span>
+    <p class="section-subtitle">Marque o que você notou. Se quiser, escreva mais detalhes no final.</p>
+
+    <div id="alertaUrgenteBox" class="alerta-urgente" style="display:none">
+      <p>⚠️ Isso pode ser uma emergência. Não espere a resposta pelo app — procure atendimento agora.</p>
+      <button class="btn" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar agora pelo WhatsApp</button>
     </div>
-    <div class="form-card">
+
+    <div class="section-group-title" style="margin-top:0">Sinais de alarme</div>
+    <div class="sinais-wrap" id="sinaisUrgenteWrap"></div>
+
+    <div class="section-group-title">Outros sinais</div>
+    <div class="sinais-wrap" id="sinaisAtencaoWrap"></div>
+
+    <div class="form-card" style="margin-top:16px">
       <div class="field">
-        <label>O que você notou?</label>
-        <textarea id="queixaTextoInput" placeholder="Ex: Meu bebê está recusando mamar desde ontem e parece mais irritado que o normal..."></textarea>
+        <label>Quer contar mais alguma coisa? <span class="hint">(opcional)</span></label>
+        <textarea id="queixaTextoInput" placeholder="Ex: começou ontem à noite, já tinha acontecido antes..."></textarea>
       </div>
     </div>
     <button class="btn btn-primary" id="btnEnviarQueixa" onclick="enviarQueixa()"><span class="material-icons-round">send</span> Enviar para a Dra. Dayane</button>
@@ -899,12 +916,64 @@ async function renderSobre(){
 }
 
 // =====================
-// SISTEMA PRAXIS — relatar sintoma (queixa) com apoio de IA
-// para a Dra. Dayane. A mãe NUNCA vê nível de urgência calculado
-// pela IA — a mensagem de retorno é sempre a mesma, reforçando
-// que qualquer coisa que pareça urgente deve ir direto ao
-// WhatsApp/pronto-socorro, sem esperar revisão do app.
+// SISTEMA PRAXIS — relatar sintoma (queixa) via checklist de sinais
+// + observação livre opcional. O nível de urgência é calculado no
+// servidor a partir do GRUPO dos sinais marcados aqui (não pela IA),
+// e o alerta de emergência aparece na hora, no client, assim que
+// qualquer sinal do grupo 'urgente' é marcado — sem esperar rede
+// nem resposta do servidor. A mãe NUNCA vê o texto "nível calculado"
+// em si; ela só vê o alerta de emergência quando ele existe.
+//
+// Lista inspirada nos sinais gerais de perigo do AIDPI/IMCI (OMS) e
+// no traffic light system do NICE para crianças <5 anos — mantida
+// fixa no código (não editável via Sheets) porque é uma camada de
+// segurança, não conteúdo editorial.
 // =====================
+const SINAIS_ALARME = [
+  { id:'resp',          grupo:'urgente', label:'Dificuldade para respirar ou respiração muito rápida' },
+  { id:'cianose',       grupo:'urgente', label:'Lábios, língua ou rosto arroxeados/azulados' },
+  { id:'consciencia',   grupo:'urgente', label:'Muito sonolento, difícil de acordar ou não responde como sempre' },
+  { id:'convulsao',     grupo:'urgente', label:'Convulsão (abalos que não consegue controlar)' },
+  { id:'recusa_total',  grupo:'urgente', label:'Não consegue beber/mamar nada, ou vomita tudo que ingere' },
+  { id:'sangramento',   grupo:'urgente', label:'Sangramento que não para' },
+  { id:'palidez',       grupo:'urgente', label:'Pele fria, manchada ou muito pálida' },
+
+  { id:'febre',         grupo:'atencao', label:'Febre' },
+  { id:'recusa_parcial',grupo:'atencao', label:'Comendo/mamando menos que o normal' },
+  { id:'diarreia',      grupo:'atencao', label:'Diarreia frequente' },
+  { id:'choro',         grupo:'atencao', label:'Choro diferente do normal, difícil de consolar' },
+  { id:'atividade',     grupo:'atencao', label:'Menos ativo, mas ainda responde normalmente' },
+  { id:'fraldas',       grupo:'atencao', label:'Poucas fraldas molhadas hoje' },
+  { id:'pele',          grupo:'atencao', label:'Manchas ou vermelhidão na pele' },
+  { id:'tosse',         grupo:'atencao', label:'Tosse persistente' },
+];
+let SINAIS_SELECIONADOS = new Set();
+
+function chipSinalHtml(s){
+  return `<button type="button" class="sinal-chip" data-id="${s.id}" data-grupo="${s.grupo}" onclick="toggleSinal('${s.id}')">${s.label}</button>`;
+}
+
+function renderSinaisChips(){
+  document.getElementById('sinaisUrgenteWrap').innerHTML = SINAIS_ALARME.filter(s => s.grupo === 'urgente').map(chipSinalHtml).join('');
+  document.getElementById('sinaisAtencaoWrap').innerHTML = SINAIS_ALARME.filter(s => s.grupo === 'atencao').map(chipSinalHtml).join('');
+}
+
+function toggleSinal(id){
+  if (SINAIS_SELECIONADOS.has(id)) SINAIS_SELECIONADOS.delete(id); else SINAIS_SELECIONADOS.add(id);
+  atualizarSinaisUI();
+}
+
+function atualizarSinaisUI(){
+  document.querySelectorAll('.sinal-chip').forEach(btn => {
+    const sel = SINAIS_SELECIONADOS.has(btn.dataset.id);
+    btn.classList.toggle('selecionado', sel);
+    btn.classList.toggle('urgente', sel && btn.dataset.grupo === 'urgente');
+    btn.classList.toggle('atencao', sel && btn.dataset.grupo === 'atencao');
+  });
+  const temUrgente = SINAIS_ALARME.some(s => s.grupo === 'urgente' && SINAIS_SELECIONADOS.has(s.id));
+  document.getElementById('alertaUrgenteBox').style.display = temUrgente ? 'block' : 'none';
+}
+
 function resetQueixaForm(){
   const conf = document.getElementById('queixaConfirmacao');
   const form = document.getElementById('queixaFormWrap');
@@ -914,19 +983,26 @@ function resetQueixaForm(){
   if (textarea) textarea.value = '';
   const btn = document.getElementById('btnEnviarQueixa');
   if (btn) { btn.disabled = false; btn.innerHTML = '<span class="material-icons-round">send</span> Enviar para a Dra. Dayane'; }
+  SINAIS_SELECIONADOS = new Set();
+  renderSinaisChips();
+  atualizarSinaisUI();
 }
 
 async function enviarQueixa(){
   const textarea = document.getElementById('queixaTextoInput');
-  const texto = textarea.value.trim();
-  if (!texto) { showToast('Descreva o que você notou antes de enviar'); return; }
+  const observacaoLivre = textarea.value.trim();
+  if (SINAIS_SELECIONADOS.size === 0 && !observacaoLivre) { showToast('Marque ao menos um sinal ou escreva uma observação'); return; }
   if (!PERFIL) { showToast('Cadastre seu bebê primeiro'); return; }
+
+  const sinaisMarcados = SINAIS_ALARME
+    .filter(s => SINAIS_SELECIONADOS.has(s.id))
+    .map(s => ({ label: s.label, grupo: s.grupo }));
 
   const btn = document.getElementById('btnEnviarQueixa');
   btn.disabled = true;
   btn.textContent = 'Enviando…';
 
-  const data = await enviarComFila({ tipo: 'queixa_nova', bebeId: PERFIL.bebe.id, queixaTexto: texto });
+  const data = await enviarComFila({ tipo: 'queixa_nova', bebeId: PERFIL.bebe.id, sinaisMarcados, observacaoLivre });
 
   const msg = data.offline
     ? 'Sem conexão agora — vamos enviar automaticamente assim que seu aparelho reconectar. Se for algo urgente, não espere: procure atendimento ou fale pelo WhatsApp agora.'
