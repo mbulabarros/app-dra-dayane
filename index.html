@@ -204,6 +204,10 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
       <div class="card-icon laranja"><span class="material-icons-round">article</span></div>
       <div><h3>Artigos</h3><p>Conteúdo escrito pela Dra. Dayane</p></div>
     </div>
+    <div class="card" onclick="abrirConteudoVisitante('sobre')">
+      <div class="card-icon verde"><span class="material-icons-round">badge</span></div>
+      <div><h3>Sobre a Dra. Dayane</h3><p>Pediatra · Neonatologista</p></div>
+    </div>
   </div>
 
   <button class="btn btn-primary" onclick="navTo('onboarding')"><span class="material-icons-round">favorite</span> Começar acompanhamento do meu bebê</button>
@@ -298,6 +302,10 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
       <div class="card-icon laranja"><span class="material-icons-round">article</span></div>
       <div><h3>Artigos</h3><p>Conteúdo escrito pela Dra. Dayane</p></div>
     </div>
+    <div class="card" onclick="navTo('sobre')">
+      <div class="card-icon verde"><span class="material-icons-round">badge</span></div>
+      <div><h3>Sobre a Dra. Dayane</h3><p>Pediatra · Neonatologista</p></div>
+    </div>
   </div>
   <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar com a Dra. Dayane</button>
   <button class="btn-link" style="display:block;margin:16px auto 0;text-align:center" onclick="trocarBebe()">Trocar bebê / Sair</button>
@@ -342,6 +350,13 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
   <h1 class="section-title brand">Artigos 📚</h1>
   <p class="section-subtitle">Conteúdo escrito pela Dra. Dayane para as famílias.</p>
   <div id="artigosContainer"><div class="loading-msg">Carregando…</div></div>
+</div>
+
+<!-- ===== SOBRE ===== -->
+<div id="sobre" class="screen">
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
+  <h1 class="section-title brand">Sobre a médica 🩺</h1>
+  <div id="sobreContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
 
 <!-- ===== CONTATO ===== -->
@@ -422,6 +437,7 @@ function navTo(id){
   if (id === 'alimentacao')     renderAlimentacao();
   if (id === 'seguranca')       { PERFIL ? renderSeguranca() : renderSegurancaVisitante(); }
   if (id === 'artigos')         renderArtigos();
+  if (id === 'sobre')           renderSobre();
 }
 
 // Volta ao "hub" certo dependendo se há alguém logado ou não
@@ -826,6 +842,30 @@ function mdParaHtml_(md){
     if (l.startsWith('- ')) return `<div style="margin:4px 0;font-size:.88rem;line-height:1.5">• ${l.slice(2)}</div>`;
     return `<p style="margin:6px 0;font-size:.88rem;line-height:1.6;color:var(--text)">${l.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</p>`;
   }).join('');
+}
+
+// =====================
+// SOBRE A MÉDICA (CMS via Sheets — igual Artigos, sem cadastro)
+// =====================
+async function renderSobre(){
+  const cont = document.getElementById('sobreContainer');
+  await carregarReferencia();
+  if (!REFERENCIA || !REFERENCIA.sobre) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
+  const s = REFERENCIA.sobre;
+  const formacaoHtml = String(s.formacao || '').split('\n').filter(l => l.trim()).map(l => `<div style="margin:4px 0;font-size:.88rem;line-height:1.5">🎓 ${l.trim()}</div>`).join('');
+  cont.innerHTML = `
+    <div style="text-align:center;margin-bottom:18px">
+      <div class="profile-ring" style="width:104px;height:104px"><img src="perfil.jpg" alt="${s.nome}" class="profile-img"></div>
+      <h2 class="brand" style="font-size:1.2rem;color:var(--laranja-d);margin:10px 0 2px">${s.nome}</h2>
+      <div style="font-size:.82rem;font-weight:800;color:var(--verde-d)">${s.especialidades}</div>
+      ${s.crm ? `<div style="font-size:.72rem;color:var(--text-soft);margin-top:2px">${s.crm}</div>` : ''}
+    </div>
+    <div class="marco-item" style="border-left-color:var(--verde)">
+      <p style="font-size:.9rem;line-height:1.6;color:var(--text);font-weight:700;margin-bottom:0">${s.bioResumo || ''}</p>
+    </div>
+    ${formacaoHtml ? `<div class="section-group-title">Formação</div><div class="marco-item">${formacaoHtml}</div>` : ''}
+    ${s.bioCompleta ? `<div class="marco-item" style="border-left-color:var(--laranja)">${mdParaHtml_(s.bioCompleta)}</div>` : ''}
+  `;
 }
 
 // =====================
