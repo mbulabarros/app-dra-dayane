@@ -149,15 +149,12 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 /* INÍCIO (landing pública, sem cadastro) */
 .inicio-wrap{background:linear-gradient(160deg,var(--laranja) 0%,var(--laranja) 38%,var(--bege) 38%)}
-.inicio-hero{text-align:center;padding:30px 16px 8px}
-.inicio-hero .splash-emoji-sm{font-size:2.2rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
-.inicio-hero h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.6rem;color:#fff;margin:8px 0 2px}
+.inicio-hero{text-align:center;padding:34px 20px 10px}
+.inicio-photo-lg{width:128px;height:128px;margin:0 auto 14px;box-shadow:0 10px 34px rgba(0,0,0,.28)}
+.inicio-hero h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.55rem;color:#fff;margin:0 0 3px}
+.inicio-spec{font-size:.8rem;font-weight:800;color:var(--amarelo);margin-bottom:12px;letter-spacing:.3px}
+.inicio-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.32);color:#fff;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.88rem;padding:7px 18px;border-radius:20px;margin-bottom:12px}
 .inicio-hero p{font-size:.84rem;color:rgba(255,255,255,.9);max-width:320px;margin:0 auto}
-.inicio-idcard{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.35);border-radius:var(--r-lg);padding:14px 16px;margin:18px 0;text-align:left}
-.inicio-idcard .profile-ring{width:60px;height:60px;flex-shrink:0}
-.inicio-idcard h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;color:#fff;margin-bottom:2px}
-.inicio-idcard .id-spec{font-size:.74rem;font-weight:800;color:var(--amarelo);margin-bottom:2px}
-.inicio-idcard .id-local{font-size:.7rem;color:rgba(255,255,255,.85);line-height:1.35}
 .explore-eyebrow{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--verde-d);margin:22px 0 10px}
 .guest-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--laranja),var(--laranja-d));border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;box-shadow:var(--shadow-md)}
 .guest-banner p{color:#fff;font-size:.8rem;font-weight:700;line-height:1.4;flex:1}
@@ -178,17 +175,11 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 <!-- ===== INÍCIO (landing pública, sem cadastro) ===== -->
 <div id="inicio" class="screen inicio-wrap">
   <div class="inicio-hero">
-    <div class="splash-emoji-sm">🌼</div>
-    <h1 class="brand">Acompanha Bebê</h1>
-    <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê — acompanhado pela Dra. Dayane Vieira.</p>
-    <div class="inicio-idcard">
-      <div class="profile-ring"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
-      <div>
-        <h2 class="brand">Dra. Dayane Vieira</h2>
-        <div class="id-spec">Pediatra · Crias + Infância</div>
-        <div class="id-local">Rua Bela Vista, 18 · Saguaçu · Joinville/SC</div>
-      </div>
-    </div>
+    <div class="profile-ring inicio-photo-lg"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
+    <h1 class="brand">Dra. Dayane Vieira</h1>
+    <div class="inicio-spec">Pediatra · Crias + Infância</div>
+    <div class="inicio-badge">🌼 Acompanha Bebê</div>
+    <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê, tudo num só lugar.</p>
   </div>
 
   <div class="explore-eyebrow">Conheça sem cadastrar</div>
@@ -208,6 +199,10 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
     <div class="card" onclick="abrirConteudoVisitante('seguranca')">
       <div class="card-icon rosa"><span class="material-icons-round">shield</span></div>
       <div><h3>Prevenção de Acidentes</h3><p>Checklist por fase motora</p></div>
+    </div>
+    <div class="card" onclick="abrirConteudoVisitante('artigos')">
+      <div class="card-icon laranja"><span class="material-icons-round">article</span></div>
+      <div><h3>Artigos</h3><p>Conteúdo escrito pela Dra. Dayane</p></div>
     </div>
   </div>
 
@@ -299,6 +294,10 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
       <div><h3>Prevenção de Acidentes</h3><p>Checklist por fase motora</p></div>
       <span class="card-badge" id="badgeSeguranca" style="display:none"></span>
     </div>
+    <div class="card" onclick="navTo('artigos')">
+      <div class="card-icon laranja"><span class="material-icons-round">article</span></div>
+      <div><h3>Artigos</h3><p>Conteúdo escrito pela Dra. Dayane</p></div>
+    </div>
   </div>
   <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar com a Dra. Dayane</button>
   <button class="btn-link" style="display:block;margin:16px auto 0;text-align:center" onclick="trocarBebe()">Trocar bebê / Sair</button>
@@ -337,6 +336,14 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
   <div id="segurancaContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
 
+<!-- ===== ARTIGOS ===== -->
+<div id="artigos" class="screen">
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
+  <h1 class="section-title brand">Artigos 📚</h1>
+  <p class="section-subtitle">Conteúdo escrito pela Dra. Dayane para as famílias.</p>
+  <div id="artigosContainer"><div class="loading-msg">Carregando…</div></div>
+</div>
+
 <!-- ===== CONTATO ===== -->
 <div id="contato" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -372,11 +379,12 @@ const CONFIG = {
   whatsapp: '5547999273653', // teste — Mbula
   nomeMedica: 'Dra. Dayane Vieira',
   clinica: 'Crias + Infância',
-  endereco: 'Crias + Infância, Rua Bela Vista, 18, Saguaçu, Joinville/SC, CEP 89221-060'
+  endereco: 'Rua Bela Vista, 18, Saguaçu, Joinville, SC, 89221-060'
 };
 
 let PERFIL = null;      // cache do perfil hidratado (modo personalizado, pós-cadastro)
 let REFERENCIA = null;  // cache dos dados de referência genéricos (modo visitante, sem cadastro)
+let ARTIGO_ABERTO = null; // id do artigo em leitura (null = mostra a lista)
 
 // =====================
 // SPLASH + BOOT
@@ -413,6 +421,7 @@ function navTo(id){
   if (id === 'vacinas')         { PERFIL ? renderVacinas() : renderVacinasVisitante(); }
   if (id === 'alimentacao')     renderAlimentacao();
   if (id === 'seguranca')       { PERFIL ? renderSeguranca() : renderSegurancaVisitante(); }
+  if (id === 'artigos')         renderArtigos();
 }
 
 // Volta ao "hub" certo dependendo se há alguém logado ou não
@@ -765,6 +774,58 @@ function renderSegurancaVisitante(){
     html += grupos[fase].map(s => `<div class="marco-item"><div class="m-texto" style="margin-bottom:0">${s.item}</div></div>`).join('');
   });
   cont.innerHTML = html;
+}
+
+// =====================
+// ARTIGOS (CMS via Sheets — conteúdo público, com ou sem cadastro)
+// =====================
+async function renderArtigos(){
+  const cont = document.getElementById('artigosContainer');
+  await carregarReferencia();
+  if (ARTIGO_ABERTO) { renderArtigoDetalhe(ARTIGO_ABERTO); return; }
+  if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
+  const lista = REFERENCIA.artigos || [];
+  if (!lista.length) { cont.innerHTML = '<div class="loading-msg">Nenhum artigo publicado ainda.</div>'; return; }
+  cont.innerHTML = lista.map(a => `
+    <div class="card" onclick="abrirArtigo('${String(a.id).replace(/'/g,"\\'")}')">
+      <div class="card-icon laranja"><span class="material-icons-round">article</span></div>
+      <div><h3>${a.titulo}</h3><p>${a.resumo}</p></div>
+    </div>`).join('');
+}
+
+function abrirArtigo(id){
+  ARTIGO_ABERTO = id;
+  renderArtigoDetalhe(id);
+}
+
+function fecharArtigo(){
+  ARTIGO_ABERTO = null;
+  renderArtigos();
+}
+
+function renderArtigoDetalhe(id){
+  const cont = document.getElementById('artigosContainer');
+  const a = REFERENCIA.artigos.find(x => String(x.id) === String(id));
+  if (!a) { cont.innerHTML = '<div class="loading-msg">Artigo não encontrado.</div>'; ARTIGO_ABERTO = null; return; }
+  cont.innerHTML = `
+    <button class="btn-back" onclick="fecharArtigo()" style="margin-bottom:10px"><span class="material-icons-round">arrow_back</span> Artigos</button>
+    <div class="section-group-title" style="margin-top:0">${a.tag || ''}</div>
+    <h2 class="brand" style="font-size:1.25rem;color:var(--laranja-d);margin-bottom:12px">${a.titulo}</h2>
+    <div class="marco-item" style="border-left-color:var(--laranja)">${mdParaHtml_(a.conteudo)}</div>
+  `;
+}
+
+// Markdown simples → HTML (## título, **negrito**, - lista, --- separador)
+function mdParaHtml_(md){
+  if (!md) return '';
+  return String(md).split('\n').map(linha => {
+    const l = linha.trim();
+    if (!l) return '';
+    if (l.startsWith('## ')) return `<h3 style="font-family:'Fredoka',sans-serif;color:var(--text);margin:14px 0 6px;font-size:1rem">${l.slice(3)}</h3>`;
+    if (l === '---') return '<hr style="border:none;border-top:1px solid #eee0d5;margin:14px 0">';
+    if (l.startsWith('- ')) return `<div style="margin:4px 0;font-size:.88rem;line-height:1.5">• ${l.slice(2)}</div>`;
+    return `<p style="margin:6px 0;font-size:.88rem;line-height:1.6;color:var(--text)">${l.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</p>`;
+  }).join('');
 }
 
 // =====================
