@@ -135,6 +135,35 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 .nav-item{text-align:center;color:#c9c2b8;text-decoration:none;font-size:.6rem;font-weight:700;flex:1;transition:color .2s;cursor:pointer;padding:4px 0}.nav-item.active{color:var(--laranja-d)}
 .nav-item .material-icons-round{display:block;font-size:22px;margin-bottom:1px}
 @media(min-width:640px){.bottom-nav{padding-left:calc(50vw - 320px);padding-right:calc(50vw - 320px)}}
+
+/* AVATAR DO BEBÊ (Home) — nunca é uma foto real, evita confundir com a médica */
+.baby-avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--amarelo),var(--rosa) 60%,var(--laranja));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fredoka',sans-serif;font-weight:600;font-size:2.4rem;box-shadow:var(--shadow-md);border:3px solid var(--white);margin:0 auto;text-shadow:0 2px 6px rgba(0,0,0,.15)}
+.doctor-credit{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;color:var(--text-soft);margin-top:10px;font-weight:700}
+.doctor-credit .material-icons-round{font-size:14px;color:var(--verde-d)}
+
+/* VACINA APLICADA — estado precisa ficar óbvio à primeira vista */
+.vac-item.aplicada{background:linear-gradient(135deg,#fff,#f1faf8);border:1.5px solid rgba(63,146,140,.35)}
+.vac-status.aplicada{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--verde)}
+.vac-status.aplicada::after{content:'✓';color:#fff;font-size:12px;font-weight:800;line-height:1}
+.vac-undo{background:none;border:none;font-family:inherit;color:var(--text-soft);font-weight:700;font-size:.68rem;text-decoration:underline;cursor:pointer;padding:4px;margin-top:2px}
+
+/* INÍCIO (landing pública, sem cadastro) */
+.inicio-wrap{background:linear-gradient(160deg,var(--laranja) 0%,var(--laranja) 38%,var(--bege) 38%)}
+.inicio-hero{text-align:center;padding:30px 16px 8px}
+.inicio-hero .splash-emoji-sm{font-size:2.2rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
+.inicio-hero h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.6rem;color:#fff;margin:8px 0 2px}
+.inicio-hero p{font-size:.84rem;color:rgba(255,255,255,.9);max-width:320px;margin:0 auto}
+.inicio-idcard{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.35);border-radius:var(--r-lg);padding:14px 16px;margin:18px 0;text-align:left}
+.inicio-idcard .profile-ring{width:60px;height:60px;flex-shrink:0}
+.inicio-idcard h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;color:#fff;margin-bottom:2px}
+.inicio-idcard .id-spec{font-size:.74rem;font-weight:800;color:var(--amarelo);margin-bottom:2px}
+.inicio-idcard .id-local{font-size:.7rem;color:rgba(255,255,255,.85);line-height:1.35}
+.explore-eyebrow{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--verde-d);margin:22px 0 10px}
+.guest-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--laranja),var(--laranja-d));border-radius:var(--r-md);padding:14px 16px;margin-bottom:16px;box-shadow:var(--shadow-md)}
+.guest-banner p{color:#fff;font-size:.8rem;font-weight:700;line-height:1.4;flex:1}
+.guest-banner button{flex-shrink:0;background:#fff;color:var(--laranja-d);border:none;border-radius:20px;padding:9px 14px;font-family:inherit;font-weight:800;font-size:.74rem;cursor:pointer;white-space:nowrap}
+.maps-link{color:var(--verde-d);font-size:.76rem;font-weight:800;text-decoration:underline;display:inline-flex;align-items:center;gap:4px;margin-top:6px}
+.maps-link .material-icons-round{font-size:15px}
 </style>
 </head>
 <body>
@@ -146,8 +175,62 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 </div>
 <div class="app" id="app">
 
+<!-- ===== INÍCIO (landing pública, sem cadastro) ===== -->
+<div id="inicio" class="screen inicio-wrap">
+  <div class="inicio-hero">
+    <div class="splash-emoji-sm">🌼</div>
+    <h1 class="brand">Acompanha Bebê</h1>
+    <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê — acompanhado pela Dra. Dayane Vieira.</p>
+    <div class="inicio-idcard">
+      <div class="profile-ring"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
+      <div>
+        <h2 class="brand">Dra. Dayane Vieira</h2>
+        <div class="id-spec">Pediatra · Crias + Infância</div>
+        <div class="id-local">Rua Bela Vista, 18 · Saguaçu · Joinville/SC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-eyebrow">Conheça sem cadastrar</div>
+  <div class="menu-grid">
+    <div class="card" onclick="abrirConteudoVisitante('desenvolvimento')">
+      <div class="card-icon laranja"><span class="material-icons-round">child_care</span></div>
+      <div><h3>Desenvolvimento</h3><p>Marcos neuropsicomotores por fase</p></div>
+    </div>
+    <div class="card" onclick="abrirConteudoVisitante('vacinas')">
+      <div class="card-icon verde"><span class="material-icons-round">vaccines</span></div>
+      <div><h3>Vacinas</h3><p>Calendário PNI/SBP</p></div>
+    </div>
+    <div class="card" onclick="abrirConteudoVisitante('alimentacao')">
+      <div class="card-icon amarelo"><span class="material-icons-round">restaurant</span></div>
+      <div><h3>Alimentação</h3><p>Orientações por faixa etária</p></div>
+    </div>
+    <div class="card" onclick="abrirConteudoVisitante('seguranca')">
+      <div class="card-icon rosa"><span class="material-icons-round">shield</span></div>
+      <div><h3>Prevenção de Acidentes</h3><p>Checklist por fase motora</p></div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="navTo('onboarding')"><span class="material-icons-round">favorite</span> Começar acompanhamento do meu bebê</button>
+  <button class="btn-link" style="display:block;margin:10px auto 0;text-align:center" onclick="navTo('login')">Já tenho cadastro →</button>
+
+  <div class="explore-eyebrow">Contato</div>
+  <a class="contact-item" href="#" onclick="abrirWhatsApp();return false"><span class="material-icons-round" style="color:#25D366">chat</span><div><span class="label">WhatsApp</span><br><span class="detail">Fale com a clínica</span></div></a>
+  <div class="contact-item">
+    <span class="material-icons-round" style="color:var(--laranja-d)">location_on</span>
+    <div>
+      <span class="label">Crias + Infância</span><br>
+      <span class="detail">Rua Bela Vista, 18 · Saguaçu · Joinville/SC · CEP 89221-060</span><br>
+      <a href="#" class="maps-link" onclick="abrirMaps();return false"><span class="material-icons-round">map</span>Ver no Google Maps</a>
+    </div>
+  </div>
+
+  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância</div>
+</div>
+
 <!-- ===== ONBOARDING (cadastro) ===== -->
 <div id="onboarding" class="screen">
+  <button class="btn-back" onclick="navTo('inicio')"><span class="material-icons-round">arrow_back</span> Início</button>
   <div class="onboard-hero">
     <div class="identity-card">
       <div class="profile-ring"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
@@ -176,7 +259,7 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 <!-- ===== LOGIN (2º aparelho) ===== -->
 <div id="login" class="screen">
-  <button class="btn-back" onclick="navTo('onboarding')"><span class="material-icons-round">arrow_back</span> Voltar</button>
+  <button class="btn-back" onclick="navTo('inicio')"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Acessar cadastro</h1>
   <p class="section-subtitle">Digite o telefone usado no cadastro e o PIN de 4 dígitos recebido por email.</p>
   <div class="form-card">
@@ -189,11 +272,12 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 <!-- ===== HOME ===== -->
 <div id="home" class="screen">
   <div class="hero">
-    <div class="profile-ring"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
+    <div class="baby-avatar" id="babyAvatar">👶</div>
     <h1 class="brand" id="homeNomeBebe">—</h1>
     <p class="tagline">Crias + Infância</p>
     <div class="idade-badge"><span class="material-icons-round">cake</span><span id="homeIdade">—</span></div>
     <div class="corrigida-note" id="homeCorrigidaNote" style="display:none">Idade corrigida em uso (prematuridade)</div>
+    <div class="doctor-credit"><span class="material-icons-round">favorite</span>Acompanhado pela Dra. Dayane Vieira</div>
   </div>
   <div class="menu-grid">
     <div class="card" onclick="navTo('desenvolvimento')">
@@ -223,7 +307,7 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 <!-- ===== DESENVOLVIMENTO ===== -->
 <div id="desenvolvimento" class="screen">
-  <button class="btn-back" onclick="navTo('home')"><span class="material-icons-round">arrow_back</span> Início</button>
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Desenvolvimento 🧸</h1>
   <p class="section-subtitle">Marcos neuropsicomotores esperados até a idade atual. Responda com atenção — "ainda não" não é motivo de alarme isolado, mas vale conversar na consulta.</p>
   <div id="marcosContainer"><div class="loading-msg">Carregando…</div></div>
@@ -231,7 +315,7 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 <!-- ===== VACINAS ===== -->
 <div id="vacinas" class="screen">
-  <button class="btn-back" onclick="navTo('home')"><span class="material-icons-round">arrow_back</span> Início</button>
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Vacinas 💉</h1>
   <p class="section-subtitle">Calendário de referência PNI/SBP. Confirme sempre com a caderneta física e com a Dra. Dayane.</p>
   <div id="vacinasContainer"><div class="loading-msg">Carregando…</div></div>
@@ -239,7 +323,7 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 <!-- ===== ALIMENTAÇÃO ===== -->
 <div id="alimentacao" class="screen">
-  <button class="btn-back" onclick="navTo('home')"><span class="material-icons-round">arrow_back</span> Início</button>
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Alimentação 🥦</h1>
   <p class="section-subtitle">Orientações por faixa etária, baseadas no Guia Alimentar do Ministério da Saúde e no Manual da SBP.</p>
   <div id="alimentacaoContainer"><div class="loading-msg">Carregando…</div></div>
@@ -247,7 +331,7 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 <!-- ===== SEGURANÇA ===== -->
 <div id="seguranca" class="screen">
-  <button class="btn-back" onclick="navTo('home')"><span class="material-icons-round">arrow_back</span> Início</button>
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Prevenção de Acidentes 🛡️</h1>
   <p class="section-subtitle">Checklist organizado por fase motora — cada fase "libera" novos riscos em casa.</p>
   <div id="segurancaContainer"><div class="loading-msg">Carregando…</div></div>
@@ -255,11 +339,18 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 <!-- ===== CONTATO ===== -->
 <div id="contato" class="screen">
-  <button class="btn-back" onclick="navTo('home')"><span class="material-icons-round">arrow_back</span> Início</button>
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Contato 📞</h1>
   <p class="section-subtitle">Crias + Infância</p>
   <a class="contact-item" href="#" onclick="abrirWhatsApp();return false"><span class="material-icons-round" style="color:#25D366">chat</span><div><span class="label">WhatsApp</span><br><span class="detail">Fale com a clínica</span></div></a>
-  <div class="contact-item"><span class="material-icons-round" style="color:var(--laranja-d)">location_on</span><div><span class="label">Crias + Infância</span><br><span class="detail">Rua Bela Vista, 18 · Saguaçu · Joinville/SC · CEP 89221-060</span></div></div>
+  <div class="contact-item">
+    <span class="material-icons-round" style="color:var(--laranja-d)">location_on</span>
+    <div>
+      <span class="label">Crias + Infância</span><br>
+      <span class="detail">Rua Bela Vista, 18 · Saguaçu · Joinville/SC · CEP 89221-060</span><br>
+      <a href="#" class="maps-link" onclick="abrirMaps();return false"><span class="material-icons-round">map</span>Ver no Google Maps</a>
+    </div>
+  </div>
   <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar pelo WhatsApp</button>
 </div>
 
@@ -280,10 +371,12 @@ const CONFIG = {
   appsScriptURL: 'https://script.google.com/macros/s/AKfycbwrBPaysgTjNsmoEnXAC9cylVMvqbD9n4s2QWelL98HMA5-h_XCDTG_WoZzoiHUuywp/exec',
   whatsapp: '5547999273653', // teste — Mbula
   nomeMedica: 'Dra. Dayane Vieira',
-  clinica: 'Crias + Infância'
+  clinica: 'Crias + Infância',
+  endereco: 'Crias + Infância, Rua Bela Vista, 18, Saguaçu, Joinville/SC, CEP 89221-060'
 };
 
-let PERFIL = null; // cache do perfil hidratado
+let PERFIL = null;      // cache do perfil hidratado (modo personalizado, pós-cadastro)
+let REFERENCIA = null;  // cache dos dados de referência genéricos (modo visitante, sem cadastro)
 
 // =====================
 // SPLASH + BOOT
@@ -300,8 +393,9 @@ function boot(){
   if (bebeId) {
     carregarPerfil(bebeId);
   } else {
-    navTo('onboarding');
+    navTo('inicio');
   }
+  processarFila();
 }
 
 // =====================
@@ -312,13 +406,39 @@ function navTo(id){
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.screen === id));
   const nav = document.getElementById('bottomNav');
-  nav.style.display = ['onboarding','login'].includes(id) ? 'none' : 'flex';
+  nav.style.display = (PERFIL && !['onboarding','login','inicio'].includes(id)) ? 'flex' : 'none';
   window.scrollTo(0,0);
 
-  if (id === 'desenvolvimento') renderMarcos();
-  if (id === 'vacinas') renderVacinas();
-  if (id === 'alimentacao') renderAlimentacao();
-  if (id === 'seguranca') renderSeguranca();
+  if (id === 'desenvolvimento') { PERFIL ? renderMarcos() : renderMarcosVisitante(); }
+  if (id === 'vacinas')         { PERFIL ? renderVacinas() : renderVacinasVisitante(); }
+  if (id === 'alimentacao')     renderAlimentacao();
+  if (id === 'seguranca')       { PERFIL ? renderSeguranca() : renderSegurancaVisitante(); }
+}
+
+// Volta ao "hub" certo dependendo se há alguém logado ou não
+function voltarConteudo(){
+  navTo(PERFIL ? 'home' : 'inicio');
+}
+
+// =====================
+// MODO VISITANTE (conteúdo sem cadastro)
+// =====================
+async function carregarReferencia(){
+  if (REFERENCIA) return REFERENCIA;
+  try {
+    const resp = await fetch(`${CONFIG.appsScriptURL}?action=referencia`);
+    REFERENCIA = await resp.json();
+  } catch (err) { REFERENCIA = null; }
+  return REFERENCIA;
+}
+
+async function abrirConteudoVisitante(id){
+  await carregarReferencia();
+  navTo(id);
+}
+
+function abrirMaps(){
+  window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.endereco)}`, '_blank');
 }
 
 function showToast(msg){
@@ -327,6 +447,44 @@ function showToast(msg){
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2200);
 }
+
+// =====================
+// RESILIÊNCIA OFFLINE — fila local com reenvio automático
+// Escritas "silenciosas" (marco/vacina/segurança) nunca devem se perder
+// por uma oscilação de rede (ex: elevador, área rural). Se o POST falhar,
+// o payload fica em localStorage e é reenviado sozinho ao reconectar ou
+// reabrir o app — sem depender de Background Sync API (que o Safari/iOS
+// não suporta), então funciona em qualquer aparelho.
+// =====================
+function enviarComFila(payload){
+  return fetch(CONFIG.appsScriptURL, { method:'POST', body: JSON.stringify(payload) })
+    .then(resp => resp.json())
+    .catch(() => {
+      const fila = JSON.parse(localStorage.getItem('filaPendente') || '[]');
+      fila.push({ payload, tentativas: 0 });
+      localStorage.setItem('filaPendente', JSON.stringify(fila));
+      return { ok: false, offline: true };
+    });
+}
+
+async function processarFila(){
+  const fila = JSON.parse(localStorage.getItem('filaPendente') || '[]');
+  if (!fila.length) return;
+  const restante = [];
+  for (const item of fila) {
+    try {
+      const resp = await fetch(CONFIG.appsScriptURL, { method:'POST', body: JSON.stringify(item.payload) });
+      const data = await resp.json();
+      if (!data.ok) restante.push(item);
+    } catch (err) {
+      item.tentativas++;
+      if (item.tentativas < 10) restante.push(item);
+    }
+  }
+  localStorage.setItem('filaPendente', JSON.stringify(restante));
+  if (fila.length && !restante.length) showToast('Dados sincronizados! ✓');
+}
+window.addEventListener('online', processarFila);
 
 // =====================
 // CADASTRO / LOGIN
@@ -384,7 +542,7 @@ async function fazerLogin(){
 function trocarBebe(){
   localStorage.removeItem('bebeId');
   PERFIL = null;
-  navTo('onboarding');
+  navTo('inicio');
 }
 
 // =====================
@@ -395,7 +553,7 @@ async function carregarPerfil(bebeId){
     const url = `${CONFIG.appsScriptURL}?action=perfil&bebeId=${encodeURIComponent(bebeId)}`;
     const resp = await fetch(url);
     const data = await resp.json();
-    if (!data.ok) { showToast(data.msg || 'Bebê não encontrado'); localStorage.removeItem('bebeId'); navTo('onboarding'); return; }
+    if (!data.ok) { showToast(data.msg || 'Bebê não encontrado'); localStorage.removeItem('bebeId'); navTo('inicio'); return; }
     PERFIL = data;
     renderHome();
     navTo('home');
@@ -417,6 +575,7 @@ function formatarIdade(meses){
 function renderHome(){
   if (!PERFIL) return;
   document.getElementById('homeNomeBebe').textContent = PERFIL.bebe.nomeBebe;
+  document.getElementById('babyAvatar').textContent = (PERFIL.bebe.nomeBebe || '?').trim().charAt(0).toUpperCase();
   document.getElementById('homeIdade').textContent = formatarIdade(PERFIL.idade.corrigidaMeses);
   document.getElementById('homeCorrigidaNote').style.display = PERFIL.idade.corrigida ? 'block' : 'none';
 
@@ -464,9 +623,20 @@ async function responderMarco(marcoId, resposta, btnEl){
   if (marco) { marco.resposta = resposta; marco.vencido = marco.vencido && resposta !== 'sim'; }
   renderMarcos();
   renderHome();
-  try {
-    await fetch(CONFIG.appsScriptURL, { method:'POST', body: JSON.stringify({ tipo:'marco_resposta', bebeId: PERFIL.bebe.id, marcoId, resposta }) });
-  } catch (err) { showToast('Salvo localmente — sem conexão para sincronizar.'); }
+  const data = await enviarComFila({ tipo:'marco_resposta', bebeId: PERFIL.bebe.id, marcoId, resposta });
+  if (data.offline) showToast('Sem conexão — será sincronizado automaticamente.');
+}
+
+// Versão informativa (sem cadastro) — mostra todos os marcos de referência, sem responder
+function renderMarcosVisitante(){
+  const cont = document.getElementById('marcosContainer');
+  if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
+  const lista = [...REFERENCIA.marcos].sort((a,b) => parseFloat(a.faixaEtariaMesesMin) - parseFloat(b.faixaEtariaMesesMin));
+  cont.innerHTML = `<div class="guest-banner"><p>Cadastre seu bebê para acompanhamento personalizado por idade</p><button onclick="navTo('onboarding')">Cadastrar</button></div>` +
+    lista.map(m => `<div class="marco-item">
+      <div class="m-faixa">${m.faixaEtariaMesesMin}-${m.faixaEtariaMesesMax} meses · ${m.dominio}</div>
+      <div class="m-texto" style="margin-bottom:0">${m.marco}</div>
+    </div>`).join('');
 }
 
 // =====================
@@ -479,11 +649,12 @@ function renderVacinas(){
   const lista = [...PERFIL.vacinas].sort((a,b) => (ordem[a.status]-ordem[b.status]) || (parseFloat(a.idadeAlvoMeses)-parseFloat(b.idadeAlvoMeses)));
 
   cont.innerHTML = lista.map(v => `
-    <div class="vac-item">
+    <div class="vac-item ${v.status === 'aplicada' ? 'aplicada' : ''}">
       <div class="vac-status ${v.status}"></div>
       <div class="vac-info">
         <div class="v-nome">${v.vacina} ${v.doseNumero > 1 || v.vacina.toLowerCase().includes('reforço') ? '· Dose '+v.doseNumero : ''}</div>
-        <div class="v-meta">Alvo: ${v.idadeAlvoMeses} meses · ${v.status === 'aplicada' ? 'Aplicada em ' + (v.dataAplicada||'') : (v.status === 'atrasada' ? 'Atrasada' : 'Pendente')}</div>
+        <div class="v-meta">Alvo: ${v.idadeAlvoMeses} meses · ${v.status === 'aplicada' ? '✓ Aplicada em ' + (v.dataAplicada||'') : (v.status === 'atrasada' ? 'Atrasada' : 'Pendente')}</div>
+        ${v.status === 'aplicada' ? `<button class="vac-undo" onclick="desfazerVacina('${v.vacina.replace(/'/g,"\\'")}', ${v.doseNumero})">Marquei errado — desfazer</button>` : ''}
       </div>
       ${v.status !== 'aplicada' ? `<div class="vac-action"><button class="vac-btn" onclick="marcarVacinaAplicada('${v.vacina.replace(/'/g,"\\'")}', ${v.doseNumero})">Marcar</button></div>` : ''}
     </div>
@@ -496,23 +667,51 @@ async function marcarVacinaAplicada(vacina, doseNumero){
   if (v) { v.status = 'aplicada'; v.dataAplicada = hoje; }
   renderVacinas();
   renderHome();
-  try {
-    await fetch(CONFIG.appsScriptURL, { method:'POST', body: JSON.stringify({ tipo:'vacina_aplicada', bebeId: PERFIL.bebe.id, vacina, doseNumero, dataAplicada: hoje }) });
-    showToast('Vacina registrada!');
-  } catch (err) { showToast('Salvo localmente — sem conexão para sincronizar.'); }
+  const data = await enviarComFila({ tipo:'vacina_aplicada', bebeId: PERFIL.bebe.id, vacina, doseNumero, dataAplicada: hoje });
+  showToast(data.offline ? 'Sem conexão — será sincronizado automaticamente.' : 'Vacina registrada!');
+}
+
+async function desfazerVacina(vacina, doseNumero){
+  const v = PERFIL.vacinas.find(x => x.vacina === vacina && String(x.doseNumero) === String(doseNumero));
+  if (v) {
+    v.status = PERFIL.idade.corrigidaMeses > parseFloat(v.idadeAlvoMeses) ? 'atrasada' : 'pendente';
+    v.dataAplicada = null;
+  }
+  renderVacinas();
+  renderHome();
+  const data = await enviarComFila({ tipo:'vacina_desfazer', bebeId: PERFIL.bebe.id, vacina, doseNumero });
+  showToast(data.offline ? 'Sem conexão — será sincronizado automaticamente.' : (data.ok ? 'Desfeito.' : (data.msg || 'Não foi possível desfazer.')));
+}
+
+// Versão informativa (sem cadastro) — calendário de referência, sem marcar
+function renderVacinasVisitante(){
+  const cont = document.getElementById('vacinasContainer');
+  if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
+  const lista = [...REFERENCIA.vacinas].sort((a,b) => parseFloat(a.idadeAlvoMeses) - parseFloat(b.idadeAlvoMeses));
+  cont.innerHTML = `<div class="guest-banner"><p>Cadastre seu bebê para acompanhar o status de cada dose</p><button onclick="navTo('onboarding')">Cadastrar</button></div>` +
+    lista.map(v => `
+    <div class="vac-item">
+      <div class="vac-status pendente"></div>
+      <div class="vac-info">
+        <div class="v-nome">${v.vacina} ${v.doseNumero > 1 || v.vacina.toLowerCase().includes('reforço') ? '· Dose '+v.doseNumero : ''}</div>
+        <div class="v-meta">Alvo: ${v.idadeAlvoMeses} meses</div>
+      </div>
+    </div>`).join('');
 }
 
 // =====================
-// ALIMENTAÇÃO (informativo)
+// ALIMENTAÇÃO (informativo — funciona com ou sem cadastro)
 // =====================
 function renderAlimentacao(){
-  if (!PERFIL) return;
   const cont = document.getElementById('alimentacaoContainer');
-  const idadeAtual = PERFIL.idade.corrigidaMeses;
-  const lista = [...(PERFIL.alimentacao||[])].sort((a,b) => parseFloat(a.faixaEtariaMesesMin)-parseFloat(b.faixaEtariaMesesMin));
+  const idadeAtual = PERFIL ? PERFIL.idade.corrigidaMeses : null;
+  const fonte = PERFIL ? (PERFIL.alimentacao || []) : (REFERENCIA ? REFERENCIA.alimentacao || [] : []);
+  const lista = [...fonte].sort((a,b) => parseFloat(a.faixaEtariaMesesMin)-parseFloat(b.faixaEtariaMesesMin));
 
-  cont.innerHTML = lista.map(a => {
-    const atual = idadeAtual >= parseFloat(a.faixaEtariaMesesMin) && idadeAtual < parseFloat(a.faixaEtariaMesesMax);
+  const banner = PERFIL ? '' : `<div class="guest-banner"><p>Cadastre seu bebê para destacar a fase atual automaticamente</p><button onclick="navTo('onboarding')">Cadastrar</button></div>`;
+
+  cont.innerHTML = banner + lista.map(a => {
+    const atual = idadeAtual !== null && idadeAtual >= parseFloat(a.faixaEtariaMesesMin) && idadeAtual < parseFloat(a.faixaEtariaMesesMax);
     return `<div class="alim-card ${atual ? 'atual' : ''}">
       <div class="a-tag">${a.faixaEtariaMesesMin}-${a.faixaEtariaMesesMax === '999' ? '24+' : a.faixaEtariaMesesMax} meses</div>
       <h3>${a.titulo}</h3>
@@ -550,9 +749,22 @@ async function responderSeguranca(itemId, resposta){
   const item = PERFIL.seguranca.find(s => String(s.id) === String(itemId));
   if (item) item.resposta = resposta;
   renderSeguranca();
-  try {
-    await fetch(CONFIG.appsScriptURL, { method:'POST', body: JSON.stringify({ tipo:'seguranca_resposta', bebeId: PERFIL.bebe.id, itemId, resposta }) });
-  } catch (err) { showToast('Salvo localmente — sem conexão para sincronizar.'); }
+  const data = await enviarComFila({ tipo:'seguranca_resposta', bebeId: PERFIL.bebe.id, itemId, resposta });
+  if (data.offline) showToast('Sem conexão — será sincronizado automaticamente.');
+}
+
+// Versão informativa (sem cadastro) — checklist de referência, sem marcar
+function renderSegurancaVisitante(){
+  const cont = document.getElementById('segurancaContainer');
+  if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
+  const grupos = {};
+  REFERENCIA.seguranca.forEach(s => { (grupos[s.faseMotora] = grupos[s.faseMotora] || []).push(s); });
+  let html = `<div class="guest-banner"><p>Cadastre seu bebê para marcar o que já foi providenciado</p><button onclick="navTo('onboarding')">Cadastrar</button></div>`;
+  Object.keys(grupos).forEach(fase => {
+    html += `<div class="section-group-title">${fase}</div>`;
+    html += grupos[fase].map(s => `<div class="marco-item"><div class="m-texto" style="margin-bottom:0">${s.item}</div></div>`).join('');
+  });
+  cont.innerHTML = html;
 }
 
 // =====================
