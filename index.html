@@ -73,8 +73,9 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 .form-card{background:var(--white);border-radius:var(--r-md);padding:16px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
 .field{margin-bottom:14px}.field:last-child{margin-bottom:0}
 .field label{display:block;font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:6px}.field label .hint{font-weight:400;color:var(--text-soft);font-size:.74rem}
-input[type="text"],input[type="tel"],input[type="date"],input[type="number"],input[type="email"],select{width:100%;padding:12px 13px;border:1.5px solid #eee0d5;border-radius:var(--r-sm);background:var(--bege);font-family:inherit;font-size:16px;color:var(--text);outline:none;transition:border-color .2s,background .2s}
-input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
+input[type="text"],input[type="tel"],input[type="date"],input[type="number"],input[type="email"],select,textarea{width:100%;padding:12px 13px;border:1.5px solid #eee0d5;border-radius:var(--r-sm);background:var(--bege);font-family:inherit;font-size:16px;color:var(--text);outline:none;transition:border-color .2s,background .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--laranja);background:var(--white)}
+textarea{resize:vertical;min-height:110px;line-height:1.4}
 
 /* ONBOARDING */
 .onboard-hero{text-align:center;padding:20px 10px 10px}
@@ -306,6 +307,10 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
       <div class="card-icon verde"><span class="material-icons-round">badge</span></div>
       <div><h3>Sobre a Dra. Dayane</h3><p>Pediatra · Neonatologista</p></div>
     </div>
+    <div class="card" onclick="navTo('queixa')">
+      <div class="card-icon rosa"><span class="material-icons-round">health_and_safety</span></div>
+      <div><h3>Relatar um sintoma</h3><p>Fale com a Dra. Dayane sobre algo que notou</p></div>
+    </div>
   </div>
   <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar com a Dra. Dayane</button>
   <button class="btn-link" style="display:block;margin:16px auto 0;text-align:center" onclick="trocarBebe()">Trocar bebê / Sair</button>
@@ -357,6 +362,30 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Sobre a médica 🩺</h1>
   <div id="sobreContainer"><div class="loading-msg">Carregando…</div></div>
+</div>
+
+<!-- ===== QUEIXA (Sistema PRAXIS — relato com apoio de IA para a médica) ===== -->
+<div id="queixa" class="screen">
+  <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
+  <h1 class="section-title brand">Relatar um sintoma 🩹</h1>
+
+  <div id="queixaConfirmacao" style="display:none"></div>
+
+  <div id="queixaFormWrap">
+    <p class="section-subtitle">Descreva o que você notou. A Dra. Dayane vai revisar.</p>
+    <div class="privacy-box" style="background:rgba(222,63,143,.08);border-color:rgba(222,63,143,.25)">
+      <span class="material-icons-round" style="color:var(--rosa)">warning</span>
+      <span><b>Isso não é um canal de urgência.</b> Se seu bebê está com dificuldade para respirar, lábios ou rosto arroxeados, muito sonolento/difícil de acordar, ou teve uma convulsão — procure atendimento agora, não espere a resposta pelo app.</span>
+    </div>
+    <div class="form-card">
+      <div class="field">
+        <label>O que você notou?</label>
+        <textarea id="queixaTextoInput" placeholder="Ex: Meu bebê está recusando mamar desde ontem e parece mais irritado que o normal..."></textarea>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="btnEnviarQueixa" onclick="enviarQueixa()"><span class="material-icons-round">send</span> Enviar para a Dra. Dayane</button>
+    <button class="btn btn-whatsapp" onclick="abrirWhatsApp()" style="margin-top:10px"><span class="material-icons-round">chat</span> Prefiro falar agora pelo WhatsApp</button>
+  </div>
 </div>
 
 <!-- ===== CONTATO ===== -->
@@ -438,6 +467,7 @@ function navTo(id){
   if (id === 'seguranca')       { PERFIL ? renderSeguranca() : renderSegurancaVisitante(); }
   if (id === 'artigos')         renderArtigos();
   if (id === 'sobre')           renderSobre();
+  if (id === 'queixa')          resetQueixaForm();
 }
 
 // Volta ao "hub" certo dependendo se há alguém logado ou não
@@ -865,6 +895,53 @@ async function renderSobre(){
     </div>
     ${formacaoHtml ? `<div class="section-group-title">Formação</div><div class="marco-item">${formacaoHtml}</div>` : ''}
     ${s.bioCompleta ? `<div class="marco-item" style="border-left-color:var(--laranja)">${mdParaHtml_(s.bioCompleta)}</div>` : ''}
+  `;
+}
+
+// =====================
+// SISTEMA PRAXIS — relatar sintoma (queixa) com apoio de IA
+// para a Dra. Dayane. A mãe NUNCA vê nível de urgência calculado
+// pela IA — a mensagem de retorno é sempre a mesma, reforçando
+// que qualquer coisa que pareça urgente deve ir direto ao
+// WhatsApp/pronto-socorro, sem esperar revisão do app.
+// =====================
+function resetQueixaForm(){
+  const conf = document.getElementById('queixaConfirmacao');
+  const form = document.getElementById('queixaFormWrap');
+  if (conf) { conf.style.display = 'none'; conf.innerHTML = ''; }
+  if (form) form.style.display = 'block';
+  const textarea = document.getElementById('queixaTextoInput');
+  if (textarea) textarea.value = '';
+  const btn = document.getElementById('btnEnviarQueixa');
+  if (btn) { btn.disabled = false; btn.innerHTML = '<span class="material-icons-round">send</span> Enviar para a Dra. Dayane'; }
+}
+
+async function enviarQueixa(){
+  const textarea = document.getElementById('queixaTextoInput');
+  const texto = textarea.value.trim();
+  if (!texto) { showToast('Descreva o que você notou antes de enviar'); return; }
+  if (!PERFIL) { showToast('Cadastre seu bebê primeiro'); return; }
+
+  const btn = document.getElementById('btnEnviarQueixa');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  const data = await enviarComFila({ tipo: 'queixa_nova', bebeId: PERFIL.bebe.id, queixaTexto: texto });
+
+  const msg = data.offline
+    ? 'Sem conexão agora — vamos enviar automaticamente assim que seu aparelho reconectar. Se for algo urgente, não espere: procure atendimento ou fale pelo WhatsApp agora.'
+    : (data.msg || 'Recebido! A Dra. Dayane vai revisar.');
+
+  document.getElementById('queixaFormWrap').style.display = 'none';
+  const conf = document.getElementById('queixaConfirmacao');
+  conf.style.display = 'block';
+  conf.innerHTML = `
+    <div class="marco-item ok" style="text-align:center">
+      <div style="font-size:2rem;margin-bottom:8px">✅</div>
+      <p style="font-size:.92rem;line-height:1.6;color:var(--text);font-weight:700;margin-bottom:0">${msg}</p>
+    </div>
+    <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar agora pelo WhatsApp</button>
+    <button class="btn-link" style="display:block;margin:14px auto 0;text-align:center" onclick="navTo('home')">Voltar ao início</button>
   `;
 }
 
