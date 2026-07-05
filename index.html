@@ -77,10 +77,23 @@ input[type="text"],input[type="tel"],input[type="date"],input[type="number"],inp
 input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 
 /* ONBOARDING */
-.onboard-hero{text-align:center;padding:24px 10px 10px}
+.onboard-hero{text-align:center;padding:20px 10px 10px}
 .onboard-hero .emoji{font-size:3rem}
-.onboard-hero h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.5rem;color:var(--laranja-d);margin:10px 0 6px}
+.onboard-hero h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.35rem;color:var(--laranja-d);margin:10px 0 6px}
 .onboard-hero p{font-size:.86rem;color:var(--text-soft);line-height:1.5;max-width:340px;margin:0 auto}
+
+/* IDENTIDADE (onboarding) */
+.identity-card{display:flex;align-items:center;gap:14px;background:var(--white);border-radius:var(--r-lg);padding:14px 16px;margin-bottom:16px;box-shadow:var(--shadow-sm);text-align:left}
+.identity-card .profile-ring{width:64px;height:64px;flex-shrink:0}
+.identity-card .id-info{flex:1;min-width:0}
+.identity-card .id-info h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;color:var(--text);margin-bottom:2px}
+.identity-card .id-info .id-spec{font-size:.76rem;font-weight:800;color:var(--verde-d);margin-bottom:3px}
+.identity-card .id-info .id-local{font-size:.72rem;color:var(--text-soft);line-height:1.35}
+
+/* CONFIANÇA / LGPD */
+.privacy-box{display:flex;gap:10px;align-items:flex-start;background:rgba(63,146,140,.08);border:1px solid rgba(63,146,140,.2);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:16px;font-size:.74rem;color:var(--text-soft);line-height:1.5}
+.privacy-box .material-icons-round{font-size:18px;color:var(--verde-d);flex-shrink:0;margin-top:1px}
+.privacy-box b{color:var(--text)}
 
 /* LISTAS */
 .marco-item,.seg-item{background:var(--white);border-radius:var(--r-md);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm);border-left:4px solid #e0dcd4}
@@ -136,10 +149,18 @@ input:focus,select:focus{border-color:var(--laranja);background:var(--white)}
 <!-- ===== ONBOARDING (cadastro) ===== -->
 <div id="onboarding" class="screen">
   <div class="onboard-hero">
-    <div class="emoji">👶</div>
-    <h1 class="brand">Acompanha Bebê</h1>
-    <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê, tudo num só lugar — acompanhado pela Dra. Dayane Vieira.</p>
+    <div class="identity-card">
+      <div class="profile-ring"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
+      <div class="id-info">
+        <h2 class="brand">Dra. Dayane Vieira</h2>
+        <div class="id-spec">Pediatra · Crias + Infância</div>
+        <div class="id-local">Rua Bela Vista, 18 · Saguaçu · Joinville/SC</div>
+      </div>
+    </div>
+    <h1 class="brand">Acompanha Bebê 👶</h1>
+    <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê, tudo num só lugar.</p>
   </div>
+  <div class="privacy-box"><span class="material-icons-round">lock</span><span><b>Privacidade garantida.</b> Seus dados ficam só entre você e a Dra. Dayane, em conformidade com a LGPD (Lei 13.709/2018). Nenhum dado é compartilhado com terceiros.</span></div>
   <div class="form-card">
     <div class="field"><label>Nome do bebê</label><input type="text" id="cadNome" placeholder="Ex: Maria Clara"></div>
     <div class="field"><label>Data de nascimento</label><input type="date" id="cadNascimento"></div>
