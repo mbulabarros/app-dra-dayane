@@ -27,7 +27,6 @@
 *{box-sizing:border-box;margin:0;padding:0}*::-webkit-scrollbar{width:0}
 body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .brand{font-family:'Fredoka',sans-serif}
-
 /* SPLASH */
 .splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,var(--laranja),#a8431a 55%,var(--laranja-d));display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
 .splash.hide{opacity:0;transform:scale(1.08);pointer-events:none}
@@ -38,11 +37,9 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 .splash-prisma{color:rgba(255,255,255,.55);font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:22px;opacity:0;animation:sf .8s .9s ease forwards}
 .splash-loader{width:48px;height:4px;background:rgba(255,255,255,.18);border-radius:2px;margin-top:30px;overflow:hidden;position:relative}.splash-loader::after{content:'';display:block;width:60%;height:100%;background:linear-gradient(90deg,var(--amarelo),var(--rosa));border-radius:2px;animation:sl 1s ease-in-out infinite}
 @keyframes sf{to{opacity:1}}@keyframes sl{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}}
-
 .app{width:100%;max-width:100%;margin:0 auto;min-height:100vh;position:relative;background:var(--bege);padding-bottom:90px}
 @media(min-width:640px){.app{padding-left:calc(50vw - 320px);padding-right:calc(50vw - 320px)}}
 .screen{position:relative;z-index:1;padding:20px 18px;display:none}.screen.active{display:block;animation:si .45s cubic-bezier(.22,1,.36,1) forwards}@keyframes si{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
 /* HERO */
 .hero{text-align:center;padding:34px 20px 18px}
 .hero-emoji{font-size:2.6rem;margin-bottom:6px}
@@ -53,7 +50,6 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 .hero .idade-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 18px;background:var(--white);border-radius:20px;font-size:.82rem;color:var(--laranja-d);font-weight:800;box-shadow:var(--shadow-sm)}
 .hero .idade-badge .material-icons-round{font-size:16px}
 .hero .corrigida-note{font-size:.68rem;color:var(--text-soft);margin-top:6px}
-
 /* CARDS */
 .menu-grid{display:flex;flex-direction:column;gap:10px;margin-top:14px}
 .card{background:var(--white);border-radius:var(--r-lg);padding:16px 15px;display:flex;align-items:center;gap:13px;cursor:pointer;transition:transform .2s,box-shadow .2s;border:1px solid rgba(0,0,0,.03);box-shadow:var(--shadow-sm);-webkit-tap-highlight-color:transparent}
@@ -66,7 +62,6 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 .card h3{font-size:.95rem;font-weight:800;margin:0;color:var(--text)}.card p{font-size:.78rem;color:var(--text-soft);margin:2px 0 0;line-height:1.35}
 .card-badge{margin-left:auto;flex-shrink:0;background:var(--rosa);color:#fff;font-size:.68rem;font-weight:800;padding:4px 9px;border-radius:20px;white-space:nowrap}
 .card-badge.ok{background:var(--verde)}
-
 /* BUTTONS */
 .btn{width:100%;padding:15px 20px;border:none;border-radius:50px;font-family:inherit;font-size:.93rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s;-webkit-tap-highlight-color:transparent}.btn:active{transform:scale(.97)}
 .btn-primary{background:linear-gradient(135deg,var(--laranja),var(--laranja-d));color:#fff;box-shadow:var(--shadow-md);margin-top:14px}
@@ -74,7 +69,6 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 .btn-outline{background:transparent;color:var(--laranja-d);border:2px solid var(--laranja);margin-top:10px}
 .btn-back{background:none;border:none;font-family:inherit;font-weight:800;color:var(--laranja-d);cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-size:.9rem;margin-bottom:14px;padding:0}
 .btn-link{background:none;border:none;font-family:inherit;color:var(--verde-d);font-weight:700;font-size:.82rem;cursor:pointer;text-decoration:underline;padding:6px}
-
 /* FORM */
 .section-title{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.35rem;color:var(--laranja-d);margin-bottom:4px}
 .section-subtitle{font-size:.85rem;color:var(--text-soft);margin-bottom:18px;line-height:1.45}
@@ -84,13 +78,11 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 input[type="text"],input[type="tel"],input[type="date"],input[type="number"],input[type="email"],select,textarea{width:100%;padding:12px 13px;border:1.5px solid #eee0d5;border-radius:var(--r-sm);background:var(--bege);font-family:inherit;font-size:16px;color:var(--text);outline:none;transition:border-color .2s,background .2s}
 input:focus,select:focus,textarea:focus{border-color:var(--laranja);background:var(--white)}
 textarea{resize:vertical;min-height:110px;line-height:1.4}
-
 /* ONBOARDING */
 .onboard-hero{text-align:center;padding:20px 10px 10px}
 .onboard-hero .emoji{font-size:3rem}
 .onboard-hero h1{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.35rem;color:var(--laranja-d);margin:10px 0 6px}
 .onboard-hero p{font-size:.86rem;color:var(--text-soft);line-height:1.5;max-width:340px;margin:0 auto}
-
 /* IDENTIDADE (onboarding) */
 .identity-card{display:flex;align-items:center;gap:14px;background:var(--white);border-radius:var(--r-lg);padding:14px 16px;margin-bottom:16px;box-shadow:var(--shadow-sm);text-align:left}
 .identity-card .profile-ring{width:64px;height:64px;flex-shrink:0}
@@ -98,12 +90,10 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .identity-card .id-info h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;color:var(--text);margin-bottom:2px}
 .identity-card .id-info .id-spec{font-size:.76rem;font-weight:800;color:var(--verde-d);margin-bottom:3px}
 .identity-card .id-info .id-local{font-size:.72rem;color:var(--text-soft);line-height:1.35}
-
 /* CONFIANÇA / LGPD */
 .privacy-box{display:flex;gap:10px;align-items:flex-start;background:rgba(63,146,140,.08);border:1px solid rgba(63,146,140,.2);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:16px;font-size:.74rem;color:var(--text-soft);line-height:1.5}
 .privacy-box .material-icons-round{font-size:18px;color:var(--verde-d);flex-shrink:0;margin-top:1px}
 .privacy-box b{color:var(--text)}
-
 /* LISTAS */
 .marco-item,.seg-item{background:var(--white);border-radius:var(--r-md);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm);border-left:4px solid #e0dcd4}
 .marco-item.vencido{border-left-color:var(--rosa)}
@@ -114,7 +104,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .resp-btn{flex:1;padding:9px;border-radius:10px;border:1.5px solid #e0dcd4;background:var(--bege);font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer;transition:all .2s;color:var(--text-soft)}
 .resp-btn.sim.active{background:var(--verde);border-color:var(--verde);color:#fff}
 .resp-btn.nao.active{background:var(--rosa);border-color:var(--rosa);color:#fff}
-
 .vac-item{background:var(--white);border-radius:var(--r-md);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:12px}
 .vac-status{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .vac-status.aplicada{background:var(--verde)}.vac-status.pendente{background:#ccc}.vac-status.atrasada{background:var(--rosa)}
@@ -124,17 +113,14 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .vac-date-row{display:flex;gap:8px;margin-top:8px;width:100%}
 .section-group-title{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-soft);margin:18px 0 8px}
 .section-group-title:first-child{margin-top:0}
-
 .alim-card{background:var(--white);border-radius:var(--r-lg);padding:18px;margin-bottom:12px;box-shadow:var(--shadow-sm);border-left:4px solid var(--amarelo)}
 .alim-card.atual{border-left-color:var(--laranja);background:linear-gradient(135deg,#fff,#fff8f0)}
 .alim-card .a-tag{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--laranja-d);margin-bottom:6px}
 .alim-card.atual .a-tag::before{content:'★ SUA FASE · '}
 .alim-card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.02rem;color:var(--text);margin-bottom:6px}
 .alim-card p{font-size:.83rem;color:var(--text-soft);line-height:1.5}
-
 .contact-item{display:flex;align-items:center;gap:13px;padding:14px;background:var(--white);border-radius:var(--r-md);margin-bottom:8px;box-shadow:var(--shadow-sm);text-decoration:none;color:inherit}
 .contact-item .material-icons-round{font-size:22px}.contact-item .label{font-weight:700;font-size:.9rem}.contact-item .detail{font-size:.78rem;color:var(--text-soft)}
-
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--verde-d);color:#fff;padding:12px 24px;border-radius:50px;font-size:.82rem;font-weight:700;box-shadow:var(--shadow-lg);opacity:0;transition:opacity .3s,transform .3s;z-index:200;pointer-events:none}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .btn-ghost{background:transparent;color:var(--laranja-d);border:1.5px solid rgba(233,102,38,.35);margin-top:10px}
 .link-recuperar{display:block;margin:14px auto 0;background:none;border:none;color:var(--verde-d);font-family:inherit;font-size:.82rem;font-weight:700;text-decoration:underline;cursor:pointer}
@@ -148,24 +134,20 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .pin-note{font-size:.72rem!important;color:var(--text-soft);margin-top:12px!important;margin-bottom:0!important}
 .footer-info{text-align:center;font-size:.68rem;color:var(--text-soft);opacity:.6;margin-top:25px;padding:0 20px;line-height:1.6}
 .loading-msg{text-align:center;padding:40px 16px;color:var(--text-soft);font-size:.85rem}
-
 /* NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;width:100%;z-index:100;background:var(--white);padding:8px 0 calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;box-shadow:0 -4px 24px rgba(0,0,0,.08)}
 .nav-item{text-align:center;color:#c9c2b8;text-decoration:none;font-size:.6rem;font-weight:700;flex:1;transition:color .2s;cursor:pointer;padding:4px 0}.nav-item.active{color:var(--laranja-d)}
 .nav-item .material-icons-round{display:block;font-size:22px;margin-bottom:1px}
 @media(min-width:640px){.bottom-nav{padding-left:calc(50vw - 320px);padding-right:calc(50vw - 320px)}}
-
 /* AVATAR DO BEBÊ (Home) — nunca é uma foto real, evita confundir com a médica */
 .baby-avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--amarelo),var(--rosa) 60%,var(--laranja));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fredoka',sans-serif;font-weight:600;font-size:2.4rem;box-shadow:var(--shadow-md);border:3px solid var(--white);margin:0 auto;text-shadow:0 2px 6px rgba(0,0,0,.15)}
 .doctor-credit{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;color:var(--text-soft);margin-top:10px;font-weight:700}
 .doctor-credit .material-icons-round{font-size:14px;color:var(--verde-d)}
-
 /* VACINA APLICADA — estado precisa ficar óbvio à primeira vista */
 .vac-item.aplicada{background:linear-gradient(135deg,#fff,#f1faf8);border:1.5px solid rgba(63,146,140,.35)}
 .vac-status.aplicada{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--verde)}
 .vac-status.aplicada::after{content:'✓';color:#fff;font-size:12px;font-weight:800;line-height:1}
 .vac-undo{background:none;border:none;font-family:inherit;color:var(--text-soft);font-weight:700;font-size:.68rem;text-decoration:underline;cursor:pointer;padding:4px;margin-top:2px}
-
 /* INÍCIO (landing pública, sem cadastro) */
 .inicio-wrap{background:linear-gradient(160deg,var(--laranja) 0%,var(--laranja) 38%,var(--bege) 38%)}
 .inicio-hero{text-align:center;padding:34px 20px 10px}
@@ -180,13 +162,15 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .guest-banner button{flex-shrink:0;background:#fff;color:var(--laranja-d);border:none;border-radius:20px;padding:9px 14px;font-family:inherit;font-weight:800;font-size:.74rem;cursor:pointer;white-space:nowrap}
 .maps-link{color:var(--verde-d);font-size:.76rem;font-weight:800;text-decoration:underline;display:inline-flex;align-items:center;gap:4px;margin-top:6px}
 .maps-link .material-icons-round{font-size:15px}
-
 /* PRAXIS — checklist de sinais (queixa) */
 .sinais-wrap{display:flex;flex-wrap:wrap;margin-bottom:6px}
 .sinal-chip{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;margin:4px 4px 4px 0;border-radius:20px;border:1.5px solid #e0dcd4;background:var(--white);font-family:inherit;font-size:.78rem;font-weight:700;color:var(--text-soft);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
 .sinal-chip.selecionado.urgente{background:var(--rosa);border-color:var(--rosa);color:#fff}
 .sinal-chip.selecionado.atencao{background:var(--amarelo);border-color:var(--amarelo);color:#7a5300}
 .duracao-chip.selecionado{background:var(--verde);border-color:var(--verde);color:#fff}
+.opt-chip.selecionado{background:var(--verde);border-color:var(--verde);color:#fff}
+.opt-chip.selecionado.alerta{background:var(--rosa);border-color:var(--rosa);color:#fff}
+.febre-row{display:flex;gap:10px}
 .alerta-urgente{background:linear-gradient(135deg,var(--rosa),#a82a72);color:#fff;border-radius:var(--r-md);padding:16px;margin-bottom:16px;box-shadow:var(--shadow-md)}
 .alerta-urgente p{font-size:.86rem;line-height:1.5;font-weight:700;margin-bottom:10px}
 .alerta-urgente .btn{background:#fff;color:var(--rosa)}
@@ -201,7 +185,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <div class="splash-prisma">PRISMA Bebê</div>
 </div>
 <div class="app" id="app">
-
 <!-- ===== INÍCIO (landing pública, sem cadastro) ===== -->
 <div id="inicio" class="screen inicio-wrap">
   <div class="inicio-hero">
@@ -211,7 +194,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
     <div class="inicio-badge">🌼 Acompanha Bebê</div>
     <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê, tudo num só lugar.</p>
   </div>
-
   <div class="explore-eyebrow">Conheça sem cadastrar</div>
   <div class="menu-grid">
     <div class="card" onclick="abrirConteudoVisitante('desenvolvimento')">
@@ -239,10 +221,8 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
       <div><h3>Sobre a Dra. Dayane</h3><p>Pediatra · Neonatologista</p></div>
     </div>
   </div>
-
   <button class="btn btn-primary" onclick="navTo('onboarding')"><span class="material-icons-round">favorite</span> Começar acompanhamento do meu bebê</button>
   <button class="btn-link" style="display:block;margin:10px auto 0;text-align:center" onclick="navTo('login')">Já tenho cadastro →</button>
-
   <div class="explore-eyebrow">Contato</div>
   <a class="contact-item" href="#" onclick="abrirWhatsApp();return false"><span class="material-icons-round" style="color:#25D366">chat</span><div><span class="label">WhatsApp</span><br><span class="detail">Fale com a clínica</span></div></a>
   <div class="contact-item">
@@ -253,10 +233,8 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
       <a href="#" class="maps-link" onclick="abrirMaps();return false"><span class="material-icons-round">map</span>Ver no Google Maps</a>
     </div>
   </div>
-
   <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância<br><span style="opacity:.7">Inteligência PRISMA Bebê · INOVAMED</span></div>
 </div>
-
 <!-- ===== ONBOARDING (cadastro) ===== -->
 <div id="onboarding" class="screen">
   <button class="btn-back" onclick="navTo('inicio')"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -285,7 +263,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <button class="btn-link" style="display:block;margin:14px auto 0;text-align:center" onclick="navTo('login')">Já tenho cadastro em outro aparelho →</button>
   <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância<br><span style="opacity:.7">Inteligência PRISMA Bebê · INOVAMED</span></div>
 </div>
-
 <!-- ===== LOGIN (2º aparelho) ===== -->
 <div id="login" class="screen">
   <button class="btn-back" onclick="navTo('inicio')"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -298,7 +275,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <button class="btn btn-primary" onclick="fazerLogin()"><span class="material-icons-round">login</span> Entrar</button>
   <button class="link-recuperar" onclick="recuperarPin()">Esqueci meu PIN</button>
 </div>
-
 <!-- ===== HOME ===== -->
 <div id="home" class="screen">
   <div class="hero">
@@ -346,7 +322,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <button class="btn-link" style="display:block;margin:16px auto 0;text-align:center" onclick="trocarBebe()">Trocar bebê / Sair</button>
   <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância<br><span style="opacity:.7">Inteligência PRISMA Bebê · INOVAMED</span></div>
 </div>
-
 <!-- ===== DESENVOLVIMENTO ===== -->
 <div id="desenvolvimento" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -354,7 +329,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <p class="section-subtitle">Marcos neuropsicomotores esperados até a idade atual. Responda com atenção — "ainda não" não é motivo de alarme isolado, mas vale conversar na consulta.</p>
   <div id="marcosContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
-
 <!-- ===== VACINAS ===== -->
 <div id="vacinas" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -362,7 +336,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <p class="section-subtitle">Calendário de referência PNI/SBP. Confirme sempre com a caderneta física e com a Dra. Dayane.</p>
   <div id="vacinasContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
-
 <!-- ===== ALIMENTAÇÃO ===== -->
 <div id="alimentacao" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -370,7 +343,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <p class="section-subtitle">Orientações por faixa etária, baseadas no Guia Alimentar do Ministério da Saúde e no Manual da SBP.</p>
   <div id="alimentacaoContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
-
 <!-- ===== SEGURANÇA ===== -->
 <div id="seguranca" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -378,7 +350,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <p class="section-subtitle">Checklist organizado por fase motora — cada fase "libera" novos riscos em casa.</p>
   <div id="segurancaContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
-
 <!-- ===== ARTIGOS ===== -->
 <div id="artigos" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -386,38 +357,42 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <p class="section-subtitle">Conteúdo escrito pela Dra. Dayane para as famílias.</p>
   <div id="artigosContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
-
 <!-- ===== SOBRE ===== -->
 <div id="sobre" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Sobre a médica 🩺</h1>
   <div id="sobreContainer"><div class="loading-msg">Carregando…</div></div>
 </div>
-
 <!-- ===== QUEIXA (Sistema PRAXIS — relato com apoio de IA para a médica) ===== -->
 <div id="queixa" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Relatar um sintoma 🩹</h1>
-
   <div id="queixaConfirmacao" style="display:none"></div>
-
   <div id="queixaFormWrap">
     <p class="section-subtitle">Marque o que você notou. Se quiser, escreva mais detalhes no final.</p>
-
     <div id="alertaUrgenteBox" class="alerta-urgente" style="display:none">
       <p>⚠️ Isso pode ser uma emergência. Não espere a resposta pelo app — procure atendimento agora.</p>
       <button class="btn" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar agora pelo WhatsApp</button>
     </div>
-
     <div class="section-group-title" style="margin-top:0">Sinais de alarme</div>
     <div class="sinais-wrap" id="sinaisUrgenteWrap"></div>
-
     <div class="section-group-title">Outros sinais</div>
     <div class="sinais-wrap" id="sinaisAtencaoWrap"></div>
-
-    <div class="section-group-title">Há quanto tempo? <span class="hint">(opcional, mas ajuda muito)</span></div>
+    <div class="section-group-title">Teve febre medida? <span class="hint">(se mediu, ajuda muito)</span></div>
+    <div class="form-card">
+      <div class="febre-row">
+        <div class="field" style="flex:1;margin-bottom:0"><label>Temperatura máxima <span class="hint">°C</span></label><input type="number" id="queixaFebreTmax" step="0.1" min="34" max="43" placeholder="ex: 38.5" inputmode="decimal"></div>
+        <div class="field" style="flex:1;margin-bottom:0"><label>Há quantos dias</label><input type="number" id="queixaFebreDias" min="1" max="30" placeholder="ex: 2" inputmode="numeric"></div>
+      </div>
+    </div>
+    <div class="section-group-title">Como está evoluindo?</div>
+    <div class="sinais-wrap" id="trajetoriaWrap"></div>
+    <div class="section-group-title">Estado geral</div>
+    <div class="sinais-wrap" id="estadoGeralWrap"></div>
+    <div class="section-group-title">Está aceitando líquidos / mamando?</div>
+    <div class="sinais-wrap" id="hidratacaoWrap"></div>
+    <div class="section-group-title">Há quanto tempo começou? <span class="hint">(opcional)</span></div>
     <div class="sinais-wrap" id="duracaoWrap"></div>
-
     <div class="form-card" style="margin-top:16px">
       <div class="field">
         <label>Quer contar mais alguma coisa? <span class="hint">(opcional)</span></label>
@@ -428,7 +403,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
     <button class="btn btn-whatsapp" onclick="abrirWhatsApp()" style="margin-top:10px"><span class="material-icons-round">chat</span> Prefiro falar agora pelo WhatsApp</button>
   </div>
 </div>
-
 <!-- ===== CONTATO ===== -->
 <div id="contato" class="screen">
   <button class="btn-back" onclick="voltarConteudo()"><span class="material-icons-round">arrow_back</span> Início</button>
@@ -445,7 +419,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   </div>
   <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar pelo WhatsApp</button>
 </div>
-
 <div class="toast" id="toast"></div>
 <div class="pin-overlay" id="pinOverlay">
   <div class="pin-modal">
@@ -465,7 +438,6 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <a class="nav-item" data-screen="contato" onclick="navTo('contato')"><span class="material-icons-round">call</span>Contato</a>
 </nav>
 </div>
-
 <script>
 // =====================
 // CONFIG
@@ -477,11 +449,9 @@ const CONFIG = {
   clinica: 'Crias + Infância',
   endereco: 'Rua Bela Vista, 18, Saguaçu, Joinville, SC, 89221-060'
 };
-
 let PERFIL = null;      // cache do perfil hidratado (modo personalizado, pós-cadastro)
 let REFERENCIA = null;  // cache dos dados de referência genéricos (modo visitante, sem cadastro)
 let ARTIGO_ABERTO = null; // id do artigo em leitura (null = mostra a lista)
-
 // =====================
 // SPLASH + BOOT
 // =====================
@@ -491,7 +461,6 @@ window.addEventListener('load', () => {
     boot();
   }, 1200);
 });
-
 function boot(){
   const bebeId = localStorage.getItem('bebeId');
   if (bebeId) {
@@ -501,7 +470,6 @@ function boot(){
   }
   processarFila();
 }
-
 // =====================
 // NAVEGAÇÃO
 // =====================
@@ -512,7 +480,6 @@ function navTo(id){
   const nav = document.getElementById('bottomNav');
   nav.style.display = (PERFIL && !['onboarding','login','inicio'].includes(id)) ? 'flex' : 'none';
   window.scrollTo(0,0);
-
   if (id === 'desenvolvimento') { PERFIL ? renderMarcos() : renderMarcosVisitante(); }
   if (id === 'vacinas')         { PERFIL ? renderVacinas() : renderVacinasVisitante(); }
   if (id === 'alimentacao')     renderAlimentacao();
@@ -521,12 +488,10 @@ function navTo(id){
   if (id === 'sobre')           renderSobre();
   if (id === 'queixa')          resetQueixaForm();
 }
-
 // Volta ao "hub" certo dependendo se há alguém logado ou não
 function voltarConteudo(){
   navTo(PERFIL ? 'home' : 'inicio');
 }
-
 // =====================
 // MODO VISITANTE (conteúdo sem cadastro)
 // =====================
@@ -538,23 +503,19 @@ async function carregarReferencia(){
   } catch (err) { REFERENCIA = null; }
   return REFERENCIA;
 }
-
 async function abrirConteudoVisitante(id){
   await carregarReferencia();
   navTo(id);
 }
-
 function abrirMaps(){
   window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.endereco)}`, '_blank');
 }
-
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2200);
 }
-
 // ===== PIN: modal persistente + cópia =====
 let PIN_ATUAL = '';
 function mostrarPinModal(pin){
@@ -570,7 +531,6 @@ function copiarPin(){
     navigator.clipboard.writeText(PIN_ATUAL).then(() => showToast('PIN copiado ✓')).catch(() => showToast('PIN: ' + PIN_ATUAL));
   } else { showToast('PIN: ' + PIN_ATUAL); }
 }
-
 // ===== Recuperação de PIN (reenvia ao e-mail cadastrado) =====
 async function recuperarPin(){
   const tel = (document.getElementById('loginTelefone').value || '').trim();
@@ -585,14 +545,8 @@ async function recuperarPin(){
     showToast('Erro de conexão. Fale com a clínica no WhatsApp.');
   }
 }
-
 // =====================
 // RESILIÊNCIA OFFLINE — fila local com reenvio automático
-// Escritas "silenciosas" (marco/vacina/segurança) nunca devem se perder
-// por uma oscilação de rede (ex: elevador, área rural). Se o POST falhar,
-// o payload fica em localStorage e é reenviado sozinho ao reconectar ou
-// reabrir o app — sem depender de Background Sync API (que o Safari/iOS
-// não suporta), então funciona em qualquer aparelho.
 // =====================
 function enviarComFila(payload){
   return fetch(CONFIG.appsScriptURL, { method:'POST', body: JSON.stringify(payload) })
@@ -604,7 +558,6 @@ function enviarComFila(payload){
       return { ok: false, offline: true };
     });
 }
-
 async function processarFila(){
   const fila = JSON.parse(localStorage.getItem('filaPendente') || '[]');
   if (!fila.length) return;
@@ -623,7 +576,6 @@ async function processarFila(){
   if (fila.length && !restante.length) showToast('Dados sincronizados! ✓');
 }
 window.addEventListener('online', processarFila);
-
 // =====================
 // CADASTRO / LOGIN
 // =====================
@@ -658,7 +610,6 @@ async function cadastrarBebe(){
     showToast('Erro de conexão. Confira o CONFIG.appsScriptURL.');
   }
 }
-
 async function fazerLogin(){
   const telefone = document.getElementById('loginTelefone').value.trim();
   const pin = document.getElementById('loginPin').value.trim();
@@ -677,13 +628,11 @@ async function fazerLogin(){
     showToast('Erro de conexão. Confira o CONFIG.appsScriptURL.');
   }
 }
-
 function trocarBebe(){
   localStorage.removeItem('bebeId');
   PERFIL = null;
   navTo('inicio');
 }
-
 // =====================
 // CARREGAR PERFIL (hidratação)
 // =====================
@@ -700,7 +649,6 @@ async function carregarPerfil(bebeId){
     showToast('Erro de conexão ao carregar perfil.');
   }
 }
-
 // =====================
 // HOME
 // =====================
@@ -710,27 +658,22 @@ function formatarIdade(meses){
   if (anos === 0) return `${mesesRestantes} ${mesesRestantes === 1 ? 'mês' : 'meses'}`;
   return `${anos} ${anos === 1 ? 'ano' : 'anos'}${mesesRestantes > 0 ? ' e ' + mesesRestantes + (mesesRestantes === 1 ? ' mês' : ' meses') : ''}`;
 }
-
 function renderHome(){
   if (!PERFIL) return;
   document.getElementById('homeNomeBebe').textContent = PERFIL.bebe.nomeBebe;
   document.getElementById('babyAvatar').textContent = (PERFIL.bebe.nomeBebe || '?').trim().charAt(0).toUpperCase();
   document.getElementById('homeIdade').textContent = formatarIdade(PERFIL.idade.corrigidaMeses);
   document.getElementById('homeCorrigidaNote').style.display = PERFIL.idade.corrigida ? 'block' : 'none';
-
   const marcosVencidos = PERFIL.marcos.filter(m => m.vencido).length;
   const badgeMarcos = document.getElementById('badgeMarcos');
   if (marcosVencidos > 0) { badgeMarcos.style.display = 'inline-block'; badgeMarcos.textContent = marcosVencidos; badgeMarcos.className = 'card-badge'; }
   else { badgeMarcos.style.display = 'none'; }
-
   const vacinasAtrasadas = PERFIL.vacinas.filter(v => v.status === 'atrasada').length;
   const badgeVacinas = document.getElementById('badgeVacinas');
   if (vacinasAtrasadas > 0) { badgeVacinas.style.display = 'inline-block'; badgeVacinas.textContent = vacinasAtrasadas; badgeVacinas.className = 'card-badge'; }
   else { badgeVacinas.style.display = 'none'; }
-
   document.getElementById('badgeSeguranca').style.display = 'none';
 }
-
 // =====================
 // DESENVOLVIMENTO
 // =====================
@@ -738,12 +681,9 @@ function renderMarcos(){
   if (!PERFIL) return;
   const cont = document.getElementById('marcosContainer');
   const idadeAtual = PERFIL.idade.corrigidaMeses;
-  // Mostra marcos cuja faixa já começou (min <= idade + 2 meses de antecedência)
   const visiveis = PERFIL.marcos.filter(m => parseFloat(m.faixaEtariaMesesMin) <= idadeAtual + 2)
     .sort((a,b) => parseFloat(a.faixaEtariaMesesMin) - parseFloat(b.faixaEtariaMesesMin));
-
   if (visiveis.length === 0) { cont.innerHTML = '<div class="loading-msg">Nenhum marco disponível ainda para a idade atual.</div>'; return; }
-
   cont.innerHTML = visiveis.map(m => {
     const classe = m.vencido ? 'vencido' : (m.resposta === 'sim' ? 'ok' : '');
     return `<div class="marco-item ${classe}">
@@ -756,7 +696,6 @@ function renderMarcos(){
     </div>`;
   }).join('');
 }
-
 async function responderMarco(marcoId, resposta, btnEl){
   const marco = PERFIL.marcos.find(m => String(m.id) === String(marcoId));
   if (marco) { marco.resposta = resposta; marco.vencido = marco.vencido && resposta !== 'sim'; }
@@ -765,8 +704,6 @@ async function responderMarco(marcoId, resposta, btnEl){
   const data = await enviarComFila({ tipo:'marco_resposta', bebeId: PERFIL.bebe.id, marcoId, resposta });
   if (data.offline) showToast('Sem conexão — será sincronizado automaticamente.');
 }
-
-// Versão informativa (sem cadastro) — mostra todos os marcos de referência, sem responder
 function renderMarcosVisitante(){
   const cont = document.getElementById('marcosContainer');
   if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
@@ -777,7 +714,6 @@ function renderMarcosVisitante(){
       <div class="m-texto" style="margin-bottom:0">${m.marco}</div>
     </div>`).join('');
 }
-
 // =====================
 // VACINAS
 // =====================
@@ -786,7 +722,6 @@ function renderVacinas(){
   const cont = document.getElementById('vacinasContainer');
   const ordem = { atrasada: 0, pendente: 1, aplicada: 2 };
   const lista = [...PERFIL.vacinas].sort((a,b) => (ordem[a.status]-ordem[b.status]) || (parseFloat(a.idadeAlvoMeses)-parseFloat(b.idadeAlvoMeses)));
-
   cont.innerHTML = lista.map(v => `
     <div class="vac-item ${v.status === 'aplicada' ? 'aplicada' : ''}">
       <div class="vac-status ${v.status}"></div>
@@ -799,7 +734,6 @@ function renderVacinas(){
     </div>
   `).join('');
 }
-
 async function marcarVacinaAplicada(vacina, doseNumero){
   const hoje = new Date().toISOString().slice(0,10);
   const v = PERFIL.vacinas.find(x => x.vacina === vacina && String(x.doseNumero) === String(doseNumero));
@@ -809,7 +743,6 @@ async function marcarVacinaAplicada(vacina, doseNumero){
   const data = await enviarComFila({ tipo:'vacina_aplicada', bebeId: PERFIL.bebe.id, vacina, doseNumero, dataAplicada: hoje });
   showToast(data.offline ? 'Sem conexão — será sincronizado automaticamente.' : 'Vacina registrada!');
 }
-
 async function desfazerVacina(vacina, doseNumero){
   const v = PERFIL.vacinas.find(x => x.vacina === vacina && String(x.doseNumero) === String(doseNumero));
   if (v) {
@@ -821,8 +754,6 @@ async function desfazerVacina(vacina, doseNumero){
   const data = await enviarComFila({ tipo:'vacina_desfazer', bebeId: PERFIL.bebe.id, vacina, doseNumero });
   showToast(data.offline ? 'Sem conexão — será sincronizado automaticamente.' : (data.ok ? 'Desfeito.' : (data.msg || 'Não foi possível desfazer.')));
 }
-
-// Versão informativa (sem cadastro) — calendário de referência, sem marcar
 function renderVacinasVisitante(){
   const cont = document.getElementById('vacinasContainer');
   if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
@@ -837,18 +768,15 @@ function renderVacinasVisitante(){
       </div>
     </div>`).join('');
 }
-
 // =====================
-// ALIMENTAÇÃO (informativo — funciona com ou sem cadastro)
+// ALIMENTAÇÃO
 // =====================
 function renderAlimentacao(){
   const cont = document.getElementById('alimentacaoContainer');
   const idadeAtual = PERFIL ? PERFIL.idade.corrigidaMeses : null;
   const fonte = PERFIL ? (PERFIL.alimentacao || []) : (REFERENCIA ? REFERENCIA.alimentacao || [] : []);
   const lista = [...fonte].sort((a,b) => parseFloat(a.faixaEtariaMesesMin)-parseFloat(b.faixaEtariaMesesMin));
-
   const banner = PERFIL ? '' : `<div class="guest-banner"><p>Cadastre seu bebê para destacar a fase atual automaticamente</p><button onclick="navTo('onboarding')">Cadastrar</button></div>`;
-
   cont.innerHTML = banner + lista.map(a => {
     const atual = idadeAtual !== null && idadeAtual >= parseFloat(a.faixaEtariaMesesMin) && idadeAtual < parseFloat(a.faixaEtariaMesesMax);
     return `<div class="alim-card ${atual ? 'atual' : ''}">
@@ -858,7 +786,6 @@ function renderAlimentacao(){
     </div>`;
   }).join('');
 }
-
 // =====================
 // SEGURANÇA
 // =====================
@@ -867,7 +794,6 @@ function renderSeguranca(){
   const cont = document.getElementById('segurancaContainer');
   const grupos = {};
   PERFIL.seguranca.forEach(s => { (grupos[s.faseMotora] = grupos[s.faseMotora] || []).push(s); });
-
   let html = '';
   Object.keys(grupos).forEach(fase => {
     html += `<div class="section-group-title">${fase}</div>`;
@@ -883,7 +809,6 @@ function renderSeguranca(){
   });
   cont.innerHTML = html || '<div class="loading-msg">Nenhum item disponível.</div>';
 }
-
 async function responderSeguranca(itemId, resposta){
   const item = PERFIL.seguranca.find(s => String(s.id) === String(itemId));
   if (item) item.resposta = resposta;
@@ -891,8 +816,6 @@ async function responderSeguranca(itemId, resposta){
   const data = await enviarComFila({ tipo:'seguranca_resposta', bebeId: PERFIL.bebe.id, itemId, resposta });
   if (data.offline) showToast('Sem conexão — será sincronizado automaticamente.');
 }
-
-// Versão informativa (sem cadastro) — checklist de referência, sem marcar
 function renderSegurancaVisitante(){
   const cont = document.getElementById('segurancaContainer');
   if (!REFERENCIA) { cont.innerHTML = '<div class="loading-msg">Não foi possível carregar. Verifique sua conexão.</div>'; return; }
@@ -905,9 +828,8 @@ function renderSegurancaVisitante(){
   });
   cont.innerHTML = html;
 }
-
 // =====================
-// ARTIGOS (CMS via Sheets — conteúdo público, com ou sem cadastro)
+// ARTIGOS
 // =====================
 async function renderArtigos(){
   const cont = document.getElementById('artigosContainer');
@@ -922,17 +844,14 @@ async function renderArtigos(){
       <div><h3>${a.titulo}</h3><p>${a.resumo}</p></div>
     </div>`).join('');
 }
-
 function abrirArtigo(id){
   ARTIGO_ABERTO = id;
   renderArtigoDetalhe(id);
 }
-
 function fecharArtigo(){
   ARTIGO_ABERTO = null;
   renderArtigos();
 }
-
 function renderArtigoDetalhe(id){
   const cont = document.getElementById('artigosContainer');
   const a = REFERENCIA.artigos.find(x => String(x.id) === String(id));
@@ -944,8 +863,6 @@ function renderArtigoDetalhe(id){
     <div class="marco-item" style="border-left-color:var(--laranja)">${mdParaHtml_(a.conteudo)}</div>
   `;
 }
-
-// Markdown simples → HTML (## título, **negrito**, - lista, --- separador)
 function mdParaHtml_(md){
   if (!md) return '';
   return String(md).split('\n').map(linha => {
@@ -957,9 +874,8 @@ function mdParaHtml_(md){
     return `<p style="margin:6px 0;font-size:.88rem;line-height:1.6;color:var(--text)">${l.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}</p>`;
   }).join('');
 }
-
 // =====================
-// SOBRE A MÉDICA (CMS via Sheets — igual Artigos, sem cadastro)
+// SOBRE A MÉDICA
 // =====================
 async function renderSobre(){
   const cont = document.getElementById('sobreContainer');
@@ -981,20 +897,8 @@ async function renderSobre(){
     ${s.bioCompleta ? `<div class="marco-item" style="border-left-color:var(--laranja)">${mdParaHtml_(s.bioCompleta)}</div>` : ''}
   `;
 }
-
 // =====================
-// SISTEMA PRAXIS — relatar sintoma (queixa) via checklist de sinais
-// + observação livre opcional. O nível de urgência é calculado no
-// servidor a partir do GRUPO dos sinais marcados aqui (não pela IA),
-// e o alerta de emergência aparece na hora, no client, assim que
-// qualquer sinal do grupo 'urgente' é marcado — sem esperar rede
-// nem resposta do servidor. A mãe NUNCA vê o texto "nível calculado"
-// em si; ela só vê o alerta de emergência quando ele existe.
-//
-// Lista inspirada nos sinais gerais de perigo do AIDPI/IMCI (OMS) e
-// no traffic light system do NICE para crianças <5 anos — mantida
-// fixa no código (não editável via Sheets) porque é uma camada de
-// segurança, não conteúdo editorial.
+// SISTEMA PRAXIS — relatar sintoma (queixa)
 // =====================
 const SINAIS_ALARME = [
   { id:'resp',          grupo:'urgente', label:'Dificuldade para respirar ou respiração muito rápida' },
@@ -1004,7 +908,6 @@ const SINAIS_ALARME = [
   { id:'recusa_total',  grupo:'urgente', label:'Não consegue beber/mamar nada, ou vomita tudo que ingere' },
   { id:'sangramento',   grupo:'urgente', label:'Sangramento que não para' },
   { id:'palidez',       grupo:'urgente', label:'Pele fria, manchada ou muito pálida' },
-
   { id:'febre',         grupo:'atencao', label:'Febre' },
   { id:'recusa_parcial',grupo:'atencao', label:'Comendo/mamando menos que o normal' },
   { id:'diarreia',      grupo:'atencao', label:'Diarreia frequente' },
@@ -1015,62 +918,101 @@ const SINAIS_ALARME = [
   { id:'tosse',         grupo:'atencao', label:'Tosse persistente' },
 ];
 let SINAIS_SELECIONADOS = new Set();
-
-// Duração dos sinais — seleção única e opcional. Ajuda a IA a diferenciar
-// um quadro agudo de um quadro arrastado (mesma queixa, leitura clínica
-// diferente conforme o tempo de evolução). Enviamos o texto (label), não
-// o id, porque é isso que entra direto no prompt do Gemini.
 const DURACOES = [
   { id:'hoje',      label:'Começou hoje' },
   { id:'2-3dias',   label:'Há 2-3 dias' },
   { id:'1semana',   label:'Há cerca de uma semana' },
   { id:'mais1sem',  label:'Há mais de uma semana' },
 ];
-let DURACAO_SELECIONADA = null; // id, ou null se não informado
-
+let DURACAO_SELECIONADA = null;
+// Novos eixos clínicos (v2) — seleção única, alimentam o motor determinístico + a IA.
+const TRAJETORIAS = [
+  { id:'piorando',   label:'Piorando',   alerta:false },
+  { id:'estavel',    label:'Estável',    alerta:false },
+  { id:'melhorando', label:'Melhorando', alerta:false },
+];
+const ESTADOS_GERAIS = [
+  { id:'ativo',      label:'Ativo / brincando', alerta:false },
+  { id:'quieto',     label:'Mais quieto',       alerta:false },
+  { id:'prostrado',  label:'Muito mole / difícil de acordar', alerta:true },
+];
+const HIDRATACOES = [
+  { id:'normal',    label:'Normal',   alerta:false },
+  { id:'reduzido',  label:'Reduzido', alerta:false },
+  { id:'recusa',    label:'Recusa',   alerta:true },
+];
+let TRAJETORIA_SEL = null, ESTADO_SEL = null, HIDRAT_SEL = null;
 function chipSinalHtml(s){
   return `<button type="button" class="sinal-chip" data-id="${s.id}" data-grupo="${s.grupo}" onclick="toggleSinal('${s.id}')">${s.label}</button>`;
 }
-
 function chipDuracaoHtml(d){
   return `<button type="button" class="sinal-chip duracao-chip" data-id="${d.id}" onclick="selecionarDuracao('${d.id}')">${d.label}</button>`;
 }
-
+function chipOptHtml(o, grupo){
+  return `<button type="button" class="sinal-chip opt-chip${o.alerta ? ' alerta-opt' : ''}" data-id="${o.id}" onclick="selecionarOpt('${grupo}','${o.id}')">${o.label}</button>`;
+}
 function renderSinaisChips(){
   document.getElementById('sinaisUrgenteWrap').innerHTML = SINAIS_ALARME.filter(s => s.grupo === 'urgente').map(chipSinalHtml).join('');
   document.getElementById('sinaisAtencaoWrap').innerHTML = SINAIS_ALARME.filter(s => s.grupo === 'atencao').map(chipSinalHtml).join('');
   document.getElementById('duracaoWrap').innerHTML = DURACOES.map(chipDuracaoHtml).join('');
+  document.getElementById('trajetoriaWrap').innerHTML = TRAJETORIAS.map(o => chipOptHtml(o,'trajetoria')).join('');
+  document.getElementById('estadoGeralWrap').innerHTML = ESTADOS_GERAIS.map(o => chipOptHtml(o,'estado')).join('');
+  document.getElementById('hidratacaoWrap').innerHTML = HIDRATACOES.map(o => chipOptHtml(o,'hidratacao')).join('');
 }
-
-// Seleção única (tipo "radio"): clicar de novo no mesmo item desmarca —
-// mantém a duração como opcional, sem forçar a família a escolher.
 function selecionarDuracao(id){
   DURACAO_SELECIONADA = (DURACAO_SELECIONADA === id) ? null : id;
   atualizarDuracaoUI();
 }
-
 function atualizarDuracaoUI(){
   document.querySelectorAll('.duracao-chip').forEach(btn => {
     btn.classList.toggle('selecionado', btn.dataset.id === DURACAO_SELECIONADA);
   });
 }
-
+// Seleção única para trajetória / estado geral / hidratação (radio; clicar de novo desmarca)
+function selecionarOpt(grupo, id){
+  if (grupo === 'trajetoria')      TRAJETORIA_SEL = (TRAJETORIA_SEL === id) ? null : id;
+  else if (grupo === 'estado')     ESTADO_SEL     = (ESTADO_SEL === id) ? null : id;
+  else if (grupo === 'hidratacao') HIDRAT_SEL     = (HIDRAT_SEL === id) ? null : id;
+  atualizarOptUI();
+  atualizarSinaisUI();
+}
+function atualizarOptUI(){
+  const mapa = { trajetoria: TRAJETORIA_SEL, estado: ESTADO_SEL, hidratacao: HIDRAT_SEL };
+  document.getElementById('trajetoriaWrap').querySelectorAll('.opt-chip').forEach(b => aplicarOpt(b, TRAJETORIA_SEL, TRAJETORIAS));
+  document.getElementById('estadoGeralWrap').querySelectorAll('.opt-chip').forEach(b => aplicarOpt(b, ESTADO_SEL, ESTADOS_GERAIS));
+  document.getElementById('hidratacaoWrap').querySelectorAll('.opt-chip').forEach(b => aplicarOpt(b, HIDRAT_SEL, HIDRATACOES));
+}
+function aplicarOpt(btn, selId, lista){
+  const sel = btn.dataset.id === selId;
+  const item = lista.find(x => x.id === btn.dataset.id) || {};
+  btn.classList.toggle('selecionado', sel);
+  btn.classList.toggle('alerta', sel && !!item.alerta);
+}
 function toggleSinal(id){
   if (SINAIS_SELECIONADOS.has(id)) SINAIS_SELECIONADOS.delete(id); else SINAIS_SELECIONADOS.add(id);
   atualizarSinaisUI();
 }
-
+// Espelha as regras determinísticas do servidor no cliente, só para o
+// ALERTA de emergência aparecer na hora (o nível oficial é do servidor).
+function haRiscoImediato(){
+  const temUrgente = SINAIS_ALARME.some(s => s.grupo === 'urgente' && SINAIS_SELECIONADOS.has(s.id));
+  if (temUrgente) return true;
+  if (ESTADO_SEL === 'prostrado') return true;
+  if (HIDRAT_SEL === 'recusa') return true;
+  const tmax = parseFloat((document.getElementById('queixaFebreTmax') || {}).value) || 0;
+  const idadeCorr = PERFIL ? parseFloat(PERFIL.idade.corrigidaMeses) : 99;
+  if (tmax >= 38 && idadeCorr < 3) return true;
+  return false;
+}
 function atualizarSinaisUI(){
-  document.querySelectorAll('.sinal-chip').forEach(btn => {
+  document.querySelectorAll('.sinal-chip:not(.opt-chip):not(.duracao-chip)').forEach(btn => {
     const sel = SINAIS_SELECIONADOS.has(btn.dataset.id);
     btn.classList.toggle('selecionado', sel);
     btn.classList.toggle('urgente', sel && btn.dataset.grupo === 'urgente');
     btn.classList.toggle('atencao', sel && btn.dataset.grupo === 'atencao');
   });
-  const temUrgente = SINAIS_ALARME.some(s => s.grupo === 'urgente' && SINAIS_SELECIONADOS.has(s.id));
-  document.getElementById('alertaUrgenteBox').style.display = temUrgente ? 'block' : 'none';
+  document.getElementById('alertaUrgenteBox').style.display = haRiscoImediato() ? 'block' : 'none';
 }
-
 function resetQueixaForm(){
   const conf = document.getElementById('queixaConfirmacao');
   const form = document.getElementById('queixaFormWrap');
@@ -1078,39 +1020,46 @@ function resetQueixaForm(){
   if (form) form.style.display = 'block';
   const textarea = document.getElementById('queixaTextoInput');
   if (textarea) textarea.value = '';
+  const ftmax = document.getElementById('queixaFebreTmax'); if (ftmax) ftmax.value = '';
+  const fdias = document.getElementById('queixaFebreDias'); if (fdias) fdias.value = '';
   const btn = document.getElementById('btnEnviarQueixa');
   if (btn) { btn.disabled = false; btn.innerHTML = '<span class="material-icons-round">send</span> Enviar para a Dra. Dayane'; }
   SINAIS_SELECIONADOS = new Set();
   DURACAO_SELECIONADA = null;
+  TRAJETORIA_SEL = null; ESTADO_SEL = null; HIDRAT_SEL = null;
   renderSinaisChips();
   atualizarSinaisUI();
   atualizarDuracaoUI();
+  atualizarOptUI();
+  const ft = document.getElementById('queixaFebreTmax');
+  if (ft) ft.oninput = atualizarSinaisUI;
 }
-
 async function enviarQueixa(){
   const textarea = document.getElementById('queixaTextoInput');
   const observacaoLivre = textarea.value.trim();
-  if (SINAIS_SELECIONADOS.size === 0 && !observacaoLivre) { showToast('Marque ao menos um sinal ou escreva uma observação'); return; }
+  const febreTmax = (document.getElementById('queixaFebreTmax').value || '').trim();
+  const febreDias = (document.getElementById('queixaFebreDias').value || '').trim();
+  const temAlgo = SINAIS_SELECIONADOS.size > 0 || observacaoLivre || febreTmax || ESTADO_SEL || HIDRAT_SEL || TRAJETORIA_SEL;
+  if (!temAlgo) { showToast('Marque ao menos um sinal ou preencha alguma informação'); return; }
   if (!PERFIL) { showToast('Cadastre seu bebê primeiro'); return; }
-
   const sinaisMarcados = SINAIS_ALARME
     .filter(s => SINAIS_SELECIONADOS.has(s.id))
     .map(s => ({ label: s.label, grupo: s.grupo }));
-
   const duracao = DURACAO_SELECIONADA
     ? (DURACOES.find(d => d.id === DURACAO_SELECIONADA) || {}).label || ''
     : '';
-
   const btn = document.getElementById('btnEnviarQueixa');
   btn.disabled = true;
   btn.textContent = 'Enviando…';
-
-  const data = await enviarComFila({ tipo: 'queixa_nova', bebeId: PERFIL.bebe.id, sinaisMarcados, observacaoLivre, duracao });
-
+  const data = await enviarComFila({
+    tipo: 'queixa_nova', bebeId: PERFIL.bebe.id,
+    sinaisMarcados, observacaoLivre, duracao,
+    trajetoria: TRAJETORIA_SEL || '', estadoGeral: ESTADO_SEL || '', aceitaLiquidos: HIDRAT_SEL || '',
+    febreTmax: febreTmax, febreDias: febreDias
+  });
   const msg = data.offline
     ? 'Sem conexão agora — vamos enviar automaticamente assim que seu aparelho reconectar. Se for algo urgente, não espere: procure atendimento ou fale pelo WhatsApp agora.'
     : (data.msg || 'Recebido! A Dra. Dayane vai revisar.');
-
   document.getElementById('queixaFormWrap').style.display = 'none';
   const conf = document.getElementById('queixaConfirmacao');
   conf.style.display = 'block';
@@ -1123,7 +1072,6 @@ async function enviarQueixa(){
     <button class="btn-link" style="display:block;margin:14px auto 0;text-align:center" onclick="navTo('home')">Voltar ao início</button>
   `;
 }
-
 // =====================
 // CONTATO
 // =====================
@@ -1132,14 +1080,13 @@ function abrirWhatsApp(){
   const texto = encodeURIComponent(`Olá! Gostaria de falar sobre o acompanhamento de ${nome || 'meu bebê'}.`);
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${texto}`, '_blank');
 }
-
 // =====================
 // SERVICE WORKER
 // =====================
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
-  (function(){if(typeof navTo!=='function')return;var _orig=navTo,_ready=false,_skip=false;function wrapped(id){_orig(id);if(_skip){_skip=false;return;}try{var st={screen:id};if(!_ready){history.replaceState(st,'');_ready=true;}else if(!history.state||history.state.screen!==id){history.pushState(st,'');}}catch(e){}}window.navTo=wrapped;try{navTo=wrapped;}catch(e){}try{var cur=document.querySelector('.screen.active');if(cur&&cur.id){history.replaceState({screen:cur.id},'');_ready=true;}}catch(e){}window.addEventListener('popstate',function(e){var id=(e.state&&e.state.screen)||(typeof PERFIL!=='undefined'&&PERFIL?'home':'inicio');if(!document.getElementById(id))return;_skip=true;wrapped(id);});})();
+(function(){if(typeof navTo!=='function')return;var _orig=navTo,_ready=false,_skip=false;function wrapped(id){_orig(id);if(_skip){_skip=false;return;}try{var st={screen:id};if(!_ready){history.replaceState(st,'');_ready=true;}else if(!history.state||history.state.screen!==id){history.pushState(st,'');}}catch(e){}}window.navTo=wrapped;try{navTo=wrapped;}catch(e){}try{var cur=document.querySelector('.screen.active');if(cur&&cur.id){history.replaceState({screen:cur.id},'');_ready=true;}}catch(e){}window.addEventListener('popstate',function(e){var id=(e.state&&e.state.screen)||(typeof PERFIL!=='undefined'&&PERFIL?'home':'inicio');if(!document.getElementById(id))return;_skip=true;wrapped(id);});})();
 </script>
 </body>
 </html>
