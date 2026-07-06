@@ -1,10 +1,21 @@
+https://raw.githubusercontent.com/mbulabarros/app-dra-dayane/main/index.html
+→ https://raw.githubusercontent.com/mbulabarros/app-dra-dayane/main/index.html
+Content-Type: text/plain; charset=utf-8
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dra. Dayane Vieira | Acompanha Bebê</title>
-<meta name="description" content="Dra. Dayane Vieira — Pediatra · Crias + Infância. Acompanhamento do desenvolvimento, vacinas, alimentação e segurança do seu bebê.">
+<title>Dra. Dayane Vieira · Pediatra e Neonatologista | Acompanha Bebê</title>
+<meta name="description" content="Dra. Dayane Vieira — Pediatra e Neonatologista · Crias + Infância. Acompanhamento do desenvolvimento, vacinas, alimentação e segurança do seu bebê, com atenção especial ao prematuro.">
+<meta name="author" content="Dra. Dayane Vieira — Pediatra e Neonatologista">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dra. Dayane Vieira · Pediatra e Neonatologista">
+<meta property="og:description" content="Acompanhamento do bebê — desenvolvimento, vacinas, alimentação e segurança — com atenção especial ao prematuro. Crias + Infância · Joinville/SC.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dra. Dayane Vieira · Pediatra e Neonatologista">
+<meta name="twitter:description" content="Acompanha Bebê — cuidado pediátrico e neonatal, com atenção especial ao prematuro.">
 <meta name="theme-color" content="#E96626">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,6 +39,7 @@ body{font-family:'Nunito',-apple-system,sans-serif;background:var(--laranja);col
 @keyframes spFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .splash-name{font-family:'Fredoka',sans-serif;font-weight:600;color:var(--amarelo);font-size:1.9rem;margin-top:14px;opacity:0;animation:sf .8s .3s ease forwards}
 .splash-sub{color:#fff;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:6px;opacity:.85;opacity:0;animation:sf .8s .6s ease forwards}
+.splash-prisma{color:rgba(255,255,255,.55);font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:22px;opacity:0;animation:sf .8s .9s ease forwards}
 .splash-loader{width:48px;height:4px;background:rgba(255,255,255,.18);border-radius:2px;margin-top:30px;overflow:hidden;position:relative}.splash-loader::after{content:'';display:block;width:60%;height:100%;background:linear-gradient(90deg,var(--amarelo),var(--rosa));border-radius:2px;animation:sl 1s ease-in-out infinite}
 @keyframes sf{to{opacity:1}}@keyframes sl{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}}
 
@@ -128,6 +140,16 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 .contact-item .material-icons-round{font-size:22px}.contact-item .label{font-weight:700;font-size:.9rem}.contact-item .detail{font-size:.78rem;color:var(--text-soft)}
 
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--verde-d);color:#fff;padding:12px 24px;border-radius:50px;font-size:.82rem;font-weight:700;box-shadow:var(--shadow-lg);opacity:0;transition:opacity .3s,transform .3s;z-index:200;pointer-events:none}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.btn-ghost{background:transparent;color:var(--laranja-d);border:1.5px solid rgba(233,102,38,.35);margin-top:10px}
+.link-recuperar{display:block;margin:14px auto 0;background:none;border:none;color:var(--verde-d);font-family:inherit;font-size:.82rem;font-weight:700;text-decoration:underline;cursor:pointer}
+.pin-overlay{position:fixed;inset:0;z-index:500;background:rgba(44,44,44,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:22px}
+.pin-overlay.show{display:flex;animation:si .35s ease}
+.pin-modal{background:var(--white);border-radius:var(--r-lg);padding:28px 22px;max-width:360px;width:100%;text-align:center;box-shadow:var(--shadow-lg)}
+.pin-emoji{font-size:2.4rem;margin-bottom:6px}
+.pin-modal h3{font-family:'Fredoka',sans-serif;color:var(--laranja-d);font-size:1.25rem;margin-bottom:8px}
+.pin-modal p{font-size:.83rem;color:var(--text-soft);line-height:1.5;margin-bottom:14px}
+.pin-code{font-size:2.6rem;font-weight:800;letter-spacing:10px;color:var(--laranja-d);background:var(--bege);border-radius:var(--r-md);padding:16px 10px;margin-bottom:16px;padding-left:20px}
+.pin-note{font-size:.72rem!important;color:var(--text-soft);margin-top:12px!important;margin-bottom:0!important}
 .footer-info{text-align:center;font-size:.68rem;color:var(--text-soft);opacity:.6;margin-top:25px;padding:0 20px;line-height:1.6}
 .loading-msg{text-align:center;padding:40px 16px;color:var(--text-soft);font-size:.85rem}
 
@@ -178,8 +200,9 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 <div class="splash" id="splash">
   <div class="splash-emoji">🌼</div>
   <div class="splash-name brand">Dra. Dayane Vieira</div>
-  <div class="splash-sub">Crias + Infância</div>
+  <div class="splash-sub">Pediatra · Neonatologista</div>
   <div class="splash-loader"></div>
+  <div class="splash-prisma">PRISMA Bebê</div>
 </div>
 <div class="app" id="app">
 
@@ -188,7 +211,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <div class="inicio-hero">
     <div class="profile-ring inicio-photo-lg"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
     <h1 class="brand">Dra. Dayane Vieira</h1>
-    <div class="inicio-spec">Pediatra · Crias + Infância</div>
+    <div class="inicio-spec">Pediatra · Neonatologista</div>
     <div class="inicio-badge">🌼 Acompanha Bebê</div>
     <p>Desenvolvimento, vacinas, alimentação e segurança do seu bebê, tudo num só lugar.</p>
   </div>
@@ -235,7 +258,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
     </div>
   </div>
 
-  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância</div>
+  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância<br><span style="opacity:.7">Inteligência PRISMA Bebê · INOVAMED</span></div>
 </div>
 
 <!-- ===== ONBOARDING (cadastro) ===== -->
@@ -246,7 +269,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
       <div class="profile-ring"><img src="perfil.jpg" alt="Dra. Dayane Vieira" class="profile-img"></div>
       <div class="id-info">
         <h2 class="brand">Dra. Dayane Vieira</h2>
-        <div class="id-spec">Pediatra · Crias + Infância</div>
+        <div class="id-spec">Pediatra · Neonatologista</div>
         <div class="id-local">Rua Bela Vista, 18 · Saguaçu · Joinville/SC</div>
       </div>
     </div>
@@ -257,26 +280,27 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   <div class="form-card">
     <div class="field"><label>Nome do bebê</label><input type="text" id="cadNome" placeholder="Ex: Maria Clara"></div>
     <div class="field"><label>Data de nascimento</label><input type="date" id="cadNascimento"></div>
-    <div class="field"><label>Semanas de gestação ao nascer <span class="hint">(deixe em branco se a termo)</span></label><input type="number" id="cadSemanas" placeholder="Ex: 40" min="24" max="42"></div>
+    <div class="field"><label>Idade gestacional ao nascer <span class="hint">(deixe em branco se a termo)</span></label><div style="display:flex;gap:10px"><input type="number" id="cadSemanas" placeholder="Semanas (ex: 34)" min="22" max="42" style="flex:1"><input type="number" id="cadDias" placeholder="Dias (0–6)" min="0" max="6" style="flex:1"></div></div>
     <div class="field"><label>Nome do responsável</label><input type="text" id="cadResponsavel" placeholder="Seu nome"></div>
     <div class="field"><label>Telefone (WhatsApp)</label><input type="tel" id="cadTelefone" placeholder="(47) 99999-9999"></div>
     <div class="field"><label>Email <span class="hint">(opcional — recebe o PIN de acesso)</span></label><input type="email" id="cadEmail" placeholder="seu@email.com"></div>
   </div>
   <button class="btn btn-primary" onclick="cadastrarBebe()"><span class="material-icons-round">check_circle</span> Começar acompanhamento</button>
   <button class="btn-link" style="display:block;margin:14px auto 0;text-align:center" onclick="navTo('login')">Já tenho cadastro em outro aparelho →</button>
-  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância</div>
+  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância<br><span style="opacity:.7">Inteligência PRISMA Bebê · INOVAMED</span></div>
 </div>
 
 <!-- ===== LOGIN (2º aparelho) ===== -->
 <div id="login" class="screen">
   <button class="btn-back" onclick="navTo('inicio')"><span class="material-icons-round">arrow_back</span> Início</button>
   <h1 class="section-title brand">Acessar cadastro</h1>
-  <p class="section-subtitle">Digite o telefone usado no cadastro e o PIN de 4 dígitos recebido por email.</p>
+  <p class="section-subtitle">Digite o telefone usado no cadastro e o PIN de 4 dígitos.</p>
   <div class="form-card">
     <div class="field"><label>Telefone (WhatsApp)</label><input type="tel" id="loginTelefone" placeholder="(47) 99999-9999"></div>
     <div class="field"><label>PIN de acesso</label><input type="text" id="loginPin" maxlength="4" placeholder="0000"></div>
   </div>
   <button class="btn btn-primary" onclick="fazerLogin()"><span class="material-icons-round">login</span> Entrar</button>
+  <button class="link-recuperar" onclick="recuperarPin()">Esqueci meu PIN</button>
 </div>
 
 <!-- ===== HOME ===== -->
@@ -324,7 +348,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
   </div>
   <button class="btn btn-whatsapp" onclick="abrirWhatsApp()"><span class="material-icons-round">chat</span> Falar com a Dra. Dayane</button>
   <button class="btn-link" style="display:block;margin:16px auto 0;text-align:center" onclick="trocarBebe()">Trocar bebê / Sair</button>
-  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância</div>
+  <div class="footer-info">Conteúdo educativo — não substitui consulta médica.<br>&copy; 2026 Dra. Dayane Vieira · Crias + Infância<br><span style="opacity:.7">Inteligência PRISMA Bebê · INOVAMED</span></div>
 </div>
 
 <!-- ===== DESENVOLVIMENTO ===== -->
@@ -427,6 +451,17 @@ textarea{resize:vertical;min-height:110px;line-height:1.4}
 </div>
 
 <div class="toast" id="toast"></div>
+<div class="pin-overlay" id="pinOverlay">
+  <div class="pin-modal">
+    <div class="pin-emoji">🔑</div>
+    <h3 class="brand">Guarde seu PIN de acesso</h3>
+    <p>Use o <b>telefone</b> + este <b>PIN</b> para acessar o acompanhamento em qualquer aparelho. Anote em um lugar seguro.</p>
+    <div class="pin-code" id="pinCodeValue">0000</div>
+    <button class="btn btn-primary" onclick="copiarPin()"><span class="material-icons-round">content_copy</span> Copiar PIN</button>
+    <button class="btn btn-ghost" onclick="fecharPinModal()">Já anotei — continuar</button>
+    <p class="pin-note">Se você cadastrou um e-mail, também enviamos o PIN para lá.</p>
+  </div>
+</div>
 <nav class="bottom-nav" id="bottomNav" style="display:none">
   <a class="nav-item" data-screen="home" onclick="navTo('home')"><span class="material-icons-round">home</span>Início</a>
   <a class="nav-item" data-screen="desenvolvimento" onclick="navTo('desenvolvimento')"><span class="material-icons-round">child_care</span>Marcos</a>
@@ -524,6 +559,37 @@ function showToast(msg){
   setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+// ===== PIN: modal persistente + cópia =====
+let PIN_ATUAL = '';
+function mostrarPinModal(pin){
+  PIN_ATUAL = String(pin || '');
+  document.getElementById('pinCodeValue').textContent = PIN_ATUAL;
+  document.getElementById('pinOverlay').classList.add('show');
+}
+function fecharPinModal(){
+  document.getElementById('pinOverlay').classList.remove('show');
+}
+function copiarPin(){
+  if (navigator.clipboard && PIN_ATUAL){
+    navigator.clipboard.writeText(PIN_ATUAL).then(() => showToast('PIN copiado ✓')).catch(() => showToast('PIN: ' + PIN_ATUAL));
+  } else { showToast('PIN: ' + PIN_ATUAL); }
+}
+
+// ===== Recuperação de PIN (reenvia ao e-mail cadastrado) =====
+async function recuperarPin(){
+  const tel = (document.getElementById('loginTelefone').value || '').trim();
+  if (!tel){ showToast('Digite o telefone do cadastro primeiro'); document.getElementById('loginTelefone').focus(); return; }
+  showToast('Procurando cadastro…');
+  try {
+    const url = `${CONFIG.appsScriptURL}?action=recuperar_pin&telefone=${encodeURIComponent(tel)}`;
+    const resp = await fetch(url);
+    const data = await resp.json();
+    showToast(data.msg || (data.ok ? 'PIN reenviado ao seu e-mail ✓' : 'Não encontramos esse telefone'));
+  } catch (err) {
+    showToast('Erro de conexão. Fale com a clínica no WhatsApp.');
+  }
+}
+
 // =====================
 // RESILIÊNCIA OFFLINE — fila local com reenvio automático
 // Escritas "silenciosas" (marco/vacina/segurança) nunca devem se perder
@@ -577,6 +643,7 @@ async function cadastrarBebe(){
     tipo: 'cadastro_bebe',
     nomeBebe, dataNascimento,
     semanasGestacionais: document.getElementById('cadSemanas').value,
+    diasGestacionais: document.getElementById('cadDias').value,
     nomeResponsavel: document.getElementById('cadResponsavel').value.trim(),
     telefone,
     email: document.getElementById('cadEmail').value.trim()
@@ -586,7 +653,7 @@ async function cadastrarBebe(){
     const data = await resp.json();
     if (data.ok) {
       localStorage.setItem('bebeId', data.bebeId);
-      showToast('Cadastro criado! PIN: ' + data.pin + ' (guarde para acessar de outro aparelho)');
+      mostrarPinModal(data.pin);
       carregarPerfil(data.bebeId);
     } else {
       showToast(data.msg || 'Erro ao cadastrar');
