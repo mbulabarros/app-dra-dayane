@@ -1139,6 +1139,7 @@ function abrirWhatsApp(){
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
+  (function(){if(typeof navTo!=='function')return;var _orig=navTo,_ready=false,_skip=false;function wrapped(id){_orig(id);if(_skip){_skip=false;return;}try{var st={screen:id};if(!_ready){history.replaceState(st,'');_ready=true;}else if(!history.state||history.state.screen!==id){history.pushState(st,'');}}catch(e){}}window.navTo=wrapped;try{navTo=wrapped;}catch(e){}try{var cur=document.querySelector('.screen.active');if(cur&&cur.id){history.replaceState({screen:cur.id},'');_ready=true;}}catch(e){}window.addEventListener('popstate',function(e){var id=(e.state&&e.state.screen)||(typeof PERFIL!=='undefined'&&PERFIL?'home':'inicio');if(!document.getElementById(id))return;_skip=true;wrapped(id);});})();
 </script>
 </body>
 </html>
