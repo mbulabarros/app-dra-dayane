@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Consulta de Hoje · PRISMA Bebê · Dra. Dayane Vieira</title>
+<meta name="theme-color" content="#1f2a28">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<style>
+:root{
+  --laranja:#E96626; --laranja-d:#c2410c; --amarelo:#E0A32E; --amarelo-b:#F6BC47;
+  --verde:#3F928C; --verde-d:#2b6b66; --rosa:#DE3F8F; --vermelho:#C0392B;
+  --paper:#FBF8F4; --paper-2:#F4EEE6; --card:#FFFFFF;
+  --ink:#23201d; --ink-soft:#6b625a; --ink-faint:#a89e94;
+  --line:rgba(35,32,29,.10); --line-soft:rgba(35,32,29,.06);
+  --shadow-sm:0 1px 2px rgba(35,32,29,.05), 0 1px 3px rgba(35,32,29,.05);
+  --shadow-md:0 6px 22px -8px rgba(35,32,29,.18), 0 2px 6px rgba(35,32,29,.05);
+  --shadow-lg:0 20px 48px -16px rgba(35,32,29,.28);
+  --serif:'Fraunces',Georgia,serif; --sans:'Nunito',-apple-system,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans); color:var(--ink); line-height:1.5;
+  background:var(--paper);
+  background-image:
+    radial-gradient(120% 60% at 100% 0%, rgba(233,102,38,.06), transparent 60%),
+    radial-gradient(90% 50% at 0% 0%, rgba(63,146,140,.06), transparent 55%);
+  min-height:100vh; -webkit-font-smoothing:antialiased;
+  padding:0 0 64px; padding-top:env(safe-area-inset-top);
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.mono-num{font-variant-numeric:tabular-nums}
+
+/* ---------- TOP BAR ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(251,248,244,.82);backdrop-filter:saturate(1.2) blur(12px);
+  -webkit-backdrop-filter:saturate(1.2) blur(12px);
+  border-bottom:1px solid var(--line-soft);
+}
+.topbar-in{max-width:720px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brandmark{display:flex;align-items:center;gap:10px;min-width:0}
+.brandmark .seal{
+  width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--verde),var(--verde-d));color:#fff;
+  font-family:var(--serif);font-weight:600;font-size:1.05rem;box-shadow:var(--shadow-sm)
+}
+.brandmark .bt{font-family:var(--serif);font-weight:600;font-size:.98rem;letter-spacing:.2px;line-height:1.05}
+.brandmark .bs{font-size:.62rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-top:1px}
+.icon-btn{
+  width:38px;height:38px;border-radius:11px;border:1px solid var(--line);background:var(--card);
+  display:grid;place-items:center;cursor:pointer;color:var(--ink-soft);transition:.18s;flex:none
+}
+.icon-btn:hover{color:var(--laranja-d);border-color:rgba(233,102,38,.4);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.icon-btn .material-icons-round{font-size:20px}
+.icon-btn.spin .material-icons-round{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- HERO / HEADER ---------- */
+.hero{padding:30px 0 8px}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--laranja-d);
+  font-size:.66rem;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:2.05rem;line-height:1.08;
+  margin:12px 0 6px;letter-spacing:-.4px;color:var(--ink);text-transform:capitalize}
+.hero .sub{color:var(--ink-soft);font-size:.9rem;font-weight:600}
+.hero .sub .dot{color:var(--ink-faint);margin:0 6px}
+
+/* ---------- SUMMARY STRIP ---------- */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:20px 0 6px}
+.stat{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:12px 10px 11px;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:.18s;cursor:default
+}
+.stat .n{font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1;letter-spacing:-.5px}
+.stat .l{font-size:.62rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-faint);margin-top:6px}
+.stat .pip{position:absolute;top:11px;right:11px;width:8px;height:8px;border-radius:50%}
+.stat.s3 .n{color:var(--vermelho)} .stat.s3 .pip{background:var(--vermelho)}
+.stat.s2 .n{color:var(--laranja)}  .stat.s2 .pip{background:var(--laranja)}
+.stat.s1 .n{color:var(--amarelo)}  .stat.s1 .pip{background:var(--amarelo)}
+.stat.s0 .n{color:var(--verde)}    .stat.s0 .pip{background:var(--verde)}
+
+.section-label{display:flex;align-items:center;gap:10px;margin:26px 2px 12px;
+  font-size:.66rem;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--ink-faint)}
+.section-label::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+
+/* ---------- BABY CARD ---------- */
+.list{display:flex;flex-direction:column;gap:12px}
+.baby{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:18px;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
+  transition:box-shadow .22s cubic-bezier(.22,1,.36,1), transform .22s cubic-bezier(.22,1,.36,1);
+}
+.baby::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--verde)}
+.baby.p3::before{background:var(--vermelho)} .baby.p2::before{background:var(--laranja)}
+.baby.p1::before{background:var(--amarelo)}  .baby.p0::before{background:var(--verde)}
+.baby.open{box-shadow:var(--shadow-lg);border-color:var(--line)}
+.baby-head{display:flex;align-items:center;gap:14px;padding:15px 16px 15px 20px;cursor:pointer}
+.baby-head:hover{background:linear-gradient(90deg,rgba(233,102,38,.03),transparent)}
+.avatar{
+  width:46px;height:46px;border-radius:14px;flex:none;display:grid;place-items:center;
+  font-family:var(--serif);font-weight:600;font-size:1.2rem;color:#fff;box-shadow:var(--shadow-sm)
+}
+.p3 .avatar{background:linear-gradient(140deg,#d24b3c,var(--vermelho))}
+.p2 .avatar{background:linear-gradient(140deg,var(--laranja),var(--laranja-d))}
+.p1 .avatar{background:linear-gradient(140deg,var(--amarelo-b),var(--amarelo))}
+.p0 .avatar{background:linear-gradient(140deg,var(--verde),var(--verde-d))}
+.baby-main{flex:1;min-width:0}
+.baby-name{font-family:var(--serif);font-weight:600;font-size:1.12rem;letter-spacing:-.2px;line-height:1.15;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.baby-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:5px}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;
+  padding:3px 9px;border-radius:999px;background:var(--paper-2);color:var(--ink-soft);white-space:nowrap}
+.chip .material-icons-round{font-size:13px}
+.chip.age{background:rgba(63,146,140,.12);color:var(--verde-d)}
+.chip.premie{background:rgba(222,63,143,.12);color:#b02673}
+.chip.warn-m{background:rgba(224,163,46,.16);color:#96690f}
+.chip.warn-v{background:rgba(233,102,38,.13);color:var(--laranja-d)}
+.chip.q3{background:rgba(192,57,43,.13);color:var(--vermelho)}
+.chip.q2{background:rgba(233,102,38,.13);color:var(--laranja-d)}
+.chevron{flex:none;color:var(--ink-faint);transition:transform .25s ease}
+.baby.open .chevron{transform:rotate(180deg);color:var(--laranja-d)}
+
+/* ---------- DETAIL PANEL ---------- */
+.detail{max-height:0;overflow:hidden;transition:max-height .34s cubic-bezier(.22,1,.36,1)}
+.detail-in{padding:4px 18px 20px;border-top:1px solid var(--line-soft);margin:0 2px}
+.dl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 4px}
+.dl .box{background:var(--paper);border:1px solid var(--line-soft);border-radius:12px;padding:11px 13px}
+.dl .box .k{font-size:.62rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-faint)}
+.dl .box .v{font-family:var(--serif);font-weight:600;font-size:1.18rem;margin-top:3px;letter-spacing:-.3px}
+.dl .box .v small{font-family:var(--sans);font-weight:700;font-size:.72rem;color:var(--ink-soft)}
+.dl .box.hl{background:linear-gradient(150deg,rgba(63,146,140,.10),rgba(63,146,140,.03));border-color:rgba(63,146,140,.25)}
+.dl .box.hl .v{color:var(--verde-d)}
+
+.block{margin-top:16px}
+.block h4{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:800;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:9px}
+.block h4 .material-icons-round{font-size:15px}
+.itemrow{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line-soft);font-size:.9rem}
+.itemrow:last-child{border-bottom:none}
+.itemrow .bullet{flex:none;width:6px;height:6px;border-radius:50%;margin-top:7px}
+.b-m{background:var(--amarelo)} .b-v{background:var(--laranja)}
+.tag-dom{font-size:.64rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-faint)}
+.muted-ok{display:flex;align-items:center;gap:7px;color:var(--verde-d);font-size:.86rem;font-weight:700;padding:4px 0}
+.muted-ok .material-icons-round{font-size:17px}
+
+/* complaint */
+.queixa{border:1px solid var(--line-soft);border-radius:14px;padding:13px 14px;margin-top:14px;background:var(--paper)}
+.queixa.q3{border-color:rgba(192,57,43,.3);background:linear-gradient(150deg,rgba(192,57,43,.06),transparent)}
+.queixa.q2{border-color:rgba(233,102,38,.28);background:linear-gradient(150deg,rgba(233,102,38,.05),transparent)}
+.queixa-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.level{font-size:.64rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.level.l3{background:var(--vermelho);color:#fff} .level.l2{background:var(--laranja);color:#fff}
+.level.l1{background:var(--amarelo);color:#fff} .level.l0{background:var(--verde);color:#fff}
+.queixa .when{font-size:.72rem;color:var(--ink-faint);font-weight:700}
+.queixa .txt{font-size:.88rem;color:var(--ink-soft)}
+.queixa .txt b{color:var(--ink);font-weight:800}
+.queixa .obs{margin-top:7px;font-style:italic;color:var(--ink-soft);font-size:.86rem}
+
+/* PRISMA synthesis */
+.prisma-cta{
+  width:100%;margin-top:16px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--verde),var(--verde-d));color:#fff;
+  font-family:var(--sans);font-weight:800;font-size:.92rem;letter-spacing:.3px;
+  padding:14px 16px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 10px 22px -10px rgba(43,107,102,.7);transition:.18s
+}
+.prisma-cta:hover{transform:translateY(-1px);box-shadow:0 14px 26px -10px rgba(43,107,102,.8)}
+.prisma-cta:disabled{opacity:.75;cursor:default;transform:none}
+.prisma-cta .material-icons-round{font-size:18px}
+.laudo{margin-top:14px;border:1px solid rgba(63,146,140,.28);border-radius:16px;overflow:hidden;
+  background:var(--card);box-shadow:var(--shadow-sm);animation:rise .4s cubic-bezier(.22,1,.36,1)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.laudo-h{display:flex;align-items:center;gap:9px;padding:11px 15px;background:linear-gradient(90deg,rgba(63,146,140,.1),transparent);
+  border-bottom:1px solid var(--line-soft)}
+.laudo-h .seal{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--verde),var(--verde-d));color:#fff;font-family:var(--serif);font-weight:600;font-size:.85rem}
+.laudo-h .t{font-weight:800;font-size:.82rem;letter-spacing:.3px}
+.laudo-h .t small{display:block;font-weight:700;font-size:.62rem;color:var(--ink-faint);letter-spacing:1.5px;text-transform:uppercase}
+.laudo-body{padding:6px 16px 16px}
+.laudo-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+.laudo-item:last-child{border-bottom:none}
+.laudo-num{flex:none;width:26px;height:26px;border-radius:8px;background:var(--paper-2);color:var(--verde-d);
+  font-family:var(--serif);font-weight:700;font-size:.9rem;display:grid;place-items:center;margin-top:1px}
+.laudo-item p{font-size:.92rem;color:var(--ink);line-height:1.55}
+.laudo-plain{padding:4px 0;font-size:.92rem;line-height:1.6;white-space:pre-wrap}
+.laudo-foot{padding:10px 16px;border-top:1px solid var(--line-soft);font-size:.68rem;color:var(--ink-faint);
+  display:flex;align-items:center;gap:6px}
+.laudo-foot .material-icons-round{font-size:13px}
+
+/* actions row */
+.act-row{display:flex;gap:10px;margin-top:14px}
+.act{flex:1;text-decoration:none;text-align:center;border:1px solid var(--line);border-radius:12px;
+  padding:11px;font-weight:800;font-size:.82rem;color:var(--ink-soft);background:var(--card);
+  display:flex;align-items:center;justify-content:center;gap:7px;transition:.16s}
+.act:hover{border-color:rgba(63,146,140,.5);color:var(--verde-d)}
+.act .material-icons-round{font-size:16px}
+
+/* ---------- STATES ---------- */
+.skel{background:var(--card);border:1px solid var(--line-soft);border-radius:18px;height:78px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+.skel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(35,32,29,.045),transparent);animation:shimmer 1.3s infinite}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.empty,.errbox{text-align:center;padding:56px 24px;color:var(--ink-soft)}
+.empty .ico,.errbox .ico{font-size:44px;color:var(--ink-faint);margin-bottom:10px}
+.empty h3,.errbox h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--ink);margin-bottom:6px}
+.errbox .ico{color:var(--vermelho)}
+
+/* ---------- GATE ---------- */
+.gate{max-width:420px;margin:8vh auto 0;padding:0 22px;text-align:center}
+.gate .seal-lg{width:60px;height:60px;border-radius:18px;margin:0 auto 18px;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--verde),var(--verde-d));color:#fff;font-family:var(--serif);font-weight:600;font-size:1.8rem;box-shadow:var(--shadow-md)}
+.gate .eyebrow{justify-content:center;margin-bottom:6px}.gate .eyebrow::after{display:none}
+.gate h1{font-family:var(--serif);font-weight:600;font-size:1.7rem;letter-spacing:-.3px;margin:6px 0 8px}
+.gate p{color:var(--ink-soft);font-size:.9rem;margin-bottom:20px}
+.gate input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:13px;font-family:var(--sans);
+  font-size:1rem;font-weight:700;color:var(--ink);background:var(--card);text-align:center;letter-spacing:.5px}
+.gate input:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(63,146,140,.15)}
+.gate button{width:100%;margin-top:12px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--verde),var(--verde-d));
+  color:#fff;font-family:var(--sans);font-weight:800;font-size:.95rem;padding:14px;border-radius:13px;box-shadow:var(--shadow-md);transition:.16s}
+.gate button:hover{transform:translateY(-1px)}
+.gate .err{color:var(--vermelho);font-size:.82rem;font-weight:700;margin-bottom:14px;min-height:18px}
+
+/* ---------- FOOTER ---------- */
+.foot{max-width:720px;margin:34px auto 0;padding:20px;border-top:1px solid var(--line-soft);text-align:center}
+.foot .rule{color:var(--ink-faint);font-size:.72rem;line-height:1.6}
+.foot .rule b{color:var(--ink-soft)}
+.foot .reg{margin-top:8px;font-size:.66rem;color:var(--ink-faint);display:inline-flex;align-items:center;gap:5px}
+.foot .reg .material-icons-round{font-size:13px}
+
+@media(max-width:420px){
+  .hero h1{font-size:1.8rem}
+  .summary{gap:7px}
+  .stat{padding:10px 8px}
+  .stat .n{font-size:1.35rem}
+  .dl{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- GATE (token) -->
+<div id="gate" class="gate" style="display:none">
+  <div class="seal-lg">P</div>
+  <div class="eyebrow">PRISMA Bebê · Área da médica</div>
+  <h1>Consulta de Hoje</h1>
+  <p>Acesso restrito à Dra. Dayane Vieira. Cole o token de acesso para abrir o painel do dia.</p>
+  <div class="err" id="gateErr"></div>
+  <input id="gateInput" type="password" inputmode="text" autocomplete="off" placeholder="Token de acesso" />
+  <button id="gateBtn">Entrar no painel</button>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+  <div class="topbar">
+    <div class="topbar-in">
+      <div class="brandmark">
+        <div class="seal">P</div>
+        <div>
+          <div class="bt">PRISMA Bebê</div>
+          <div class="bs">Consulta de Hoje</div>
+        </div>
+      </div>
+      <button class="icon-btn" id="btnRefresh" title="Atualizar" aria-label="Atualizar">
+        <span class="material-icons-round">refresh</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow" id="eyebrow">Painel clínico · <span id="ebDate">—</span></div>
+      <h1 id="heroDate">Carregando…</h1>
+      <div class="sub" id="heroSub">—</div>
+    </header>
+
+    <div class="summary" id="summary"></div>
+
+    <div class="section-label" id="listLabel">Pacientes por prioridade</div>
+    <div class="list" id="list"></div>
+  </div>
+
+  <footer class="foot">
+    <div class="rule">Inteligência <b>PRISMA Bebê</b> · INOVAMED &nbsp;·&nbsp; Dra. Dayane Vieira · Crias + Infância</div>
+    <div class="reg"><span class="material-icons-round">verified_user</span>
+      Apoio à decisão clínica (CFM 2.454/2026). A conduta é sempre da médica.</div>
+  </footer>
+</div>
+
+<script>
+const CONFIG = {
+  api: 'https://script.google.com/macros/s/AKfycbwrBPaysgTjNsmoEnXAC9cylVMvqbD9n4s2QWelL98HMA5-h_XCDTG_WoZzoiHUuywp/exec',
+  whatsapp: '5547999273653'
+};
+const NIVEL = {
+  3:{cls:'s3',pcls:'p3',lab:'Prioritário',lv:'l3'},
+  2:{cls:'s2',pcls:'p2',lab:'Atenção',lv:'l2'},
+  1:{cls:'s1',pcls:'p1',lab:'Observar',lv:'l1'},
+  0:{cls:'s0',pcls:'p0',lab:'Em dia',lv:'l0'}
+};
+const $ = (id)=>document.getElementById(id);
+const esc = (s)=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function getToken(){
+  const u = new URLSearchParams(location.search).get('med');
+  if(u){ try{localStorage.setItem('prisma_med_token', u);}catch(e){} return u; }
+  try{ return localStorage.getItem('prisma_med_token') || ''; }catch(e){ return ''; }
+}
+function setToken(t){ try{localStorage.setItem('prisma_med_token', t);}catch(e){} }
+function clearToken(){ try{localStorage.removeItem('prisma_med_token');}catch(e){} }
+
+function mostrarGate(msg){
+  $('app').style.display='none';
+  $('gate').style.display='block';
+  $('gateErr').textContent = msg || '';
+  $('gateInput').focus();
+}
+$('gateBtn').onclick = ()=>{
+  const t = $('gateInput').value.trim();
+  if(!t){ $('gateErr').textContent='Cole o token de acesso.'; return; }
+  setToken(t); $('gate').style.display='none'; $('app').style.display='block'; carregar();
+};
+$('gateInput').addEventListener('keydown',e=>{ if(e.key==='Enter') $('gateBtn').click(); });
+$('btnRefresh').onclick = ()=>carregar();
+
+function fmtIdade(m){
+  m = Number(m)||0;
+  if(m < 1){ const d = Math.max(0,Math.round(m*30.44)); return d+' dia'+(d===1?'':'s'); }
+  if(m < 24){ const r = Math.round(m); return r+' m'+(r===1?'ês':'eses'); }
+  const anos = Math.floor(m/12), meses = Math.round(m%12);
+  return anos+' ano'+(anos===1?'':'s')+(meses?(' '+meses+'m'):'');
+}
+function dataExtenso(iso){
+  const d = iso ? new Date(iso) : new Date();
+  const dias = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+  const mes = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  return { dia:dias[d.getDay()], txt:d.getDate()+' de '+mes[d.getMonth()], hora:('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2) };
+}
+function iniciais(nome){
+  const p = String(nome||'?').trim().split(/\s+/);
+  return ((p[0]||'?')[0] + (p.length>1 ? p[p.length-1][0] : '')).toUpperCase();
+}
+
+async function carregar(){
+  const token = getToken();
+  if(!token){ mostrarGate(); return; }
+  $('gate').style.display='none'; $('app').style.display='block';
+  $('btnRefresh').classList.add('spin');
+  $('list').innerHTML = Array.from({length:3}).map(()=>'<div class="skel"></div>').join('');
+  try{
+    const r = await fetch(CONFIG.api+'?action=consulta_hoje&token='+encodeURIComponent(token), {redirect:'follow'});
+    const data = await r.json();
+    if(!data.ok){
+      if(data.msg==='unauthorized'){ clearToken(); mostrarGate('Token inválido ou expirado. Cole novamente.'); return; }
+      throw new Error(data.msg||'Falha ao carregar.');
+    }
+    render(data);
+  }catch(e){
+    $('list').innerHTML = '<div class="errbox"><div class="ico material-icons-round">cloud_off</div>'+
+      '<h3>Não consegui carregar</h3><p>'+esc(e.message)+'</p><p style="margin-top:8px;font-size:.8rem">Verifique a conexão e toque em atualizar.</p></div>';
+  }finally{
+    $('btnRefresh').classList.remove('spin');
+  }
+}
+
+function render(data){
+  const dt = dataExtenso(data.geradoEm);
+  $('ebDate').textContent = dt.txt;
+  $('heroDate').textContent = dt.dia;
+  $('heroSub').innerHTML = (data.medica?esc(data.medica):'Dra. Dayane Vieira') +
+    '<span class="dot">·</span>'+ (data.totais.bebes) +' bebê'+(data.totais.bebes===1?'':'s')+
+    ' acompanhado'+(data.totais.bebes===1?'':'s')+'<span class="dot">·</span>atualizado '+dt.hora;
+
+  const t = data.totais;
+  $('summary').innerHTML =
+    stat('s3',t.vermelho,'Prioritário')+
+    stat('s2',t.laranja,'Atenção')+
+    stat('s1',t.amarelo,'Observar')+
+    stat('s0',t.verde,'Em dia');
+
+  const bebes = data.bebes||[];
+  if(!bebes.length){
+    $('listLabel').style.display='none';
+    $('list').innerHTML = '<div class="empty"><div class="ico material-icons-round">child_care</div>'+
+      '<h3>Nenhum bebê ainda</h3><p>Assim que as famílias se cadastrarem, eles aparecem aqui, ordenados por prioridade.</p></div>';
+    return;
+  }
+  $('listLabel').style.display='flex';
+  $('list').innerHTML = bebes.map((b,i)=>cardBebe(b,i)).join('');
+}
+
+function stat(cls,n,label){
+  return '<div class="stat '+cls+'"><span class="pip"></span><div class="n mono-num">'+(n||0)+'</div><div class="l">'+label+'</div></div>';
+}
+
+function cardBebe(b,i){
+  const nv = NIVEL[b.nivelPrioridade]||NIVEL[0];
+  const chips = [];
+  chips.push('<span class="chip age"><span class="material-icons-round">cake</span>'+fmtIdade(b.idadeCorrigidaMeses)+
+    (b.prematuro?' corrigida':'')+'</span>');
+  if(b.prematuro) chips.push('<span class="chip premie">'+esc(b.idadeGestacional)+' · prematuro</span>');
+  if(b.marcosVencidos>0) chips.push('<span class="chip warn-m"><span class="material-icons-round">flag</span>'+b.marcosVencidos+' marco'+(b.marcosVencidos>1?'s':'')+'</span>');
+  if(b.vacinasAtrasadas>0) chips.push('<span class="chip warn-v"><span class="material-icons-round">vaccines</span>'+b.vacinasAtrasadas+' vacina'+(b.vacinasAtrasadas>1?'s':'')+'</span>');
+  if(b.queixaRecente){ const q=b.queixaRecente.nivel; if(q==='urgente') chips.push('<span class="chip q3"><span class="material-icons-round">priority_high</span>queixa</span>'); else if(q==='atencao') chips.push('<span class="chip q2"><span class="material-icons-round">chat</span>queixa</span>'); }
+
+  return ''+
+  '<div class="baby '+nv.pcls+'" id="baby-'+i+'">'+
+    '<div class="baby-head" onclick="toggle('+i+')">'+
+      '<div class="avatar">'+iniciais(b.nomeBebe)+'</div>'+
+      '<div class="baby-main">'+
+        '<div class="baby-name">'+esc(b.nomeBebe)+'</div>'+
+        '<div class="baby-meta">'+chips.join('')+'</div>'+
+      '</div>'+
+      '<span class="chevron material-icons-round">expand_more</span>'+
+    '</div>'+
+    '<div class="detail" id="detail-'+i+'"><div class="detail-in">'+ detalhe(b,i) +'</div></div>'+
+  '</div>';
+}
+
+function detalhe(b,i){
+  let h = '';
+  // idade
+  h += '<div class="dl">'+
+      '<div class="box hl"><div class="k">Idade corrigida</div><div class="v">'+fmtIdade(b.idadeCorrigidaMeses)+
+        (b.prematuro?' <small>('+esc(b.idadeGestacional)+', −'+b.diasAntecipacao+'d)</small>':'')+'</div></div>'+
+      '<div class="box"><div class="k">Idade cronológica</div><div class="v">'+fmtIdade(b.idadeCronologicaMeses)+'</div></div>'+
+    '</div>';
+
+  // marcos
+  h += '<div class="block"><h4><span class="material-icons-round">flag</span>Marcos atrasados</h4>';
+  if(b.marcosVencidos>0 && b.marcosVencidosLista.length){
+    h += b.marcosVencidosLista.map(m=>{
+      const p = String(m).split(':'); const dom=p[0]||''; const rest=p.slice(1).join(':').trim();
+      return '<div class="itemrow"><span class="bullet b-m"></span><div><span class="tag-dom">'+esc(dom)+'</span><br>'+esc(rest||m)+'</div></div>';
+    }).join('');
+    if(b.marcosVencidos>b.marcosVencidosLista.length) h+='<div class="itemrow" style="color:var(--ink-faint);font-size:.82rem">+ '+(b.marcosVencidos-b.marcosVencidosLista.length)+' outro(s)</div>';
+  } else { h += '<div class="muted-ok"><span class="material-icons-round">check_circle</span>Desenvolvimento em dia para a idade corrigida</div>'; }
+  h += '</div>';
+
+  // vacinas
+  h += '<div class="block"><h4><span class="material-icons-round">vaccines</span>Vacinas atrasadas</h4>';
+  if(b.vacinasAtrasadas>0 && b.vacinasAtrasadasLista.length){
+    h += b.vacinasAtrasadasLista.map(v=>'<div class="itemrow"><span class="bullet b-v"></span><div>'+esc(v)+'</div></div>').join('');
+  } else { h += '<div class="muted-ok"><span class="material-icons-round">check_circle</span>Calendário vacinal em dia'+(b.vacinasPendentes?' ('+b.vacinasPendentes+' dose(s) ainda no prazo)':'')+'</div>'; }
+  h += '</div>';
+
+  // queixa recente
+  if(b.queixaRecente){
+    const q=b.queixaRecente; const lv = q.nivel==='urgente'?3:(q.nivel==='atencao'?2:(q.nivel==='rotina'?1:0));
+    const qcls = lv>=3?'q3':(lv>=2?'q2':'');
+    h += '<div class="block"><h4><span class="material-icons-round">health_and_safety</span>Queixa recente</h4>'+
+      '<div class="queixa '+qcls+'">'+
+        '<div class="queixa-top"><span class="level l'+lv+'">'+esc(q.nivel||'—')+'</span>'+
+          '<span class="when">'+(q.diasAtras===0?'hoje':('há '+q.diasAtras+' dia'+(q.diasAtras>1?'s':'')))+
+          (q.duracao?(' · '+esc(q.duracao)):'')+'</span></div>'+
+        '<div class="txt"><b>Sinais:</b> '+esc(q.sinais||'—')+'</div>'+
+        (q.observacao?'<div class="obs">“'+esc(q.observacao)+'”</div>':'')+
+      '</div></div>';
+  }
+
+  // PRISMA synthesis
+  h += '<button class="prisma-cta" id="cta-'+i+'" onclick="gerarSintese('+i+',\''+esc(b.bebeId)+'\')">'+
+       '<span class="material-icons-round">auto_awesome</span> Gerar síntese PRISMA Bebê</button>'+
+       '<div id="laudo-'+i+'"></div>';
+
+  // actions
+  const tel = String(b.telefone||'').replace(/\D/g,'');
+  h += '<div class="act-row">';
+  if(tel) h += '<a class="act" target="_blank" rel="noopener" href="https://wa.me/'+(tel.length<=11?'55'+tel:tel)+'"><span class="material-icons-round">chat</span>Responsável</a>';
+  h += '</div>';
+  return h;
+}
+
+const _abertos = {};
+function toggle(i){
+  const card = $('baby-'+i), det = $('detail-'+i);
+  if(!card||!det) return;
+  const open = card.classList.toggle('open');
+  det.style.maxHeight = open ? (det.scrollHeight+40)+'px' : '0';
+  _abertos[i]=open;
+}
+
+async function gerarSintese(i, bebeId){
+  const btn = $('cta-'+i), box = $('laudo-'+i), det = $('detail-'+i);
+  if(!btn) return;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="material-icons-round spin" style="animation:spin 1s linear infinite">autorenew</span> PRISMA Bebê processando…';
+  box.innerHTML = '';
+  try{
+    const token = getToken();
+    const r = await fetch(CONFIG.api+'?action=resumo_ia&token='+encodeURIComponent(token)+'&bebeId='+encodeURIComponent(bebeId), {redirect:'follow'});
+    const data = await r.json();
+    if(!data.ok) throw new Error(data.msg||'Não foi possível gerar a síntese.');
+    box.innerHTML = renderLaudo(data.resumo, data.geradoEm);
+    btn.style.display='none';
+  }catch(e){
+    btn.disabled=false;
+    btn.innerHTML = '<span class="material-icons-round">refresh</span> Tentar de novo';
+    box.innerHTML = '<div class="laudo" style="border-color:rgba(192,57,43,.3)"><div class="laudo-body"><div class="laudo-plain" style="color:var(--vermelho)">'+esc(e.message)+'</div></div></div>';
+  }finally{
+    if(det && det.style.maxHeight && det.style.maxHeight!=='0px') det.style.maxHeight = (det.scrollHeight+400)+'px';
+  }
+}
+
+function renderLaudo(texto, geradoEm){
+  texto = String(texto||'').trim();
+  const parts = texto.split(/\n?\s*(?=\d+\.\s)/).map(s=>s.trim()).filter(Boolean);
+  let body='';
+  if(parts.length>=2 && /^\d+\./.test(parts[0])){
+    body = parts.map(p=>{
+      const m = p.match(/^(\d+)\.\s*([\s\S]*)$/);
+      const num = m?m[1]:'•'; const txt = m?m[2]:p;
+      return '<div class="laudo-item"><div class="laudo-num">'+esc(num)+'</div><p>'+esc(txt)+'</p></div>';
+    }).join('');
+  } else {
+    body = '<div class="laudo-plain">'+esc(texto)+'</div>';
+  }
+  const hora = geradoEm ? dataExtenso(geradoEm).hora : dataExtenso().hora;
+  return '<div class="laudo">'+
+    '<div class="laudo-h"><div class="seal">P</div><div class="t">Síntese PRISMA Bebê<small>Apoio à decisão · gerado por IA</small></div></div>'+
+    '<div class="laudo-body">'+body+'</div>'+
+    '<div class="laudo-foot"><span class="material-icons-round">schedule</span>Gerado '+hora+' · revise antes de conduzir · o nível de urgência é determinístico, não vem da IA</div>'+
+  '</div>';
+}
+
+// boot
+carregar();
+</script>
+</body>
+</html>
