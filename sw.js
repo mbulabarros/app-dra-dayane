@@ -11,7 +11,7 @@
 
 'use strict';
 
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const CACHE_STATIC  = `acompanha-bebe-static-${CACHE_VERSION}`;
 const CACHE_RUNTIME = `acompanha-bebe-runtime-${CACHE_VERSION}`;
 
